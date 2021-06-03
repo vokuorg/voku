@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .message {
+    @apply p-2 mb-2 text-left break-words bg-gray-600 rounded-lg max-w-max;
+  }
+
+  .left {
+    @apply rounded-bl-none;
+  }
+
+  .right {
+    @apply ml-auto rounded-br-none;
+  }
+}

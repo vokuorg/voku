@@ -1,8 +1,9 @@
 import React from 'react';
 
-import Logo from '../components/logo/Logo'
-import Chat from '../components/chat/Chat'
-import UserVideoBox from '../components/user-video-box/UserVideoBox'
+import Logo from '../components/logo/Logo';
+import Chat from '../components/chat/Chat';
+import UserVideoBox from '../components/user-video-box/UserVideoBox';
+import CallControls from '../components/call-controls/CallControls';
 
 function CallRoom() {
   return (
@@ -24,6 +25,10 @@ function CallRoom() {
             name="Jokenox"
             color="bg-blue-800"
           />
+        </div>
+
+        <div className="py-3">
+          <CallControls />
         </div>
       </div>
 

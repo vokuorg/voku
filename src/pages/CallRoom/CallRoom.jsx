@@ -1,9 +1,9 @@
 import React from 'react';
 
-import Logo from '../components/logo/Logo';
-import Chat from '../components/chat/Chat';
-import UserVideoBox from '../components/user-video-box/UserVideoBox';
-import CallControls from '../components/call-controls/CallControls';
+import Logo from '../../components/logo/Logo';
+import Chat from '../../components/chat/Chat';
+import UserVideoBox from '../../components/user-video-box/UserVideoBox';
+import CallControls from '../../components/call-controls/CallControls';
 
 function CallRoom() {
   return (

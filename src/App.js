@@ -6,8 +6,8 @@ import {
   Route
 } from "react-router-dom";
 
-import Home from './pages/Home';
-import CallRoom from './pages/CallRoom';
+import Home from './pages/Home/Home';
+import CallRoom from './pages/CallRoom/CallRoom';
 
 function App() {
   return (

@@ -1,10 +1,14 @@
 import React from 'react';
 import { ReactComponent as HomeIllustration } from '../../assets/home-illustration.svg';
 import BalloonButton from '../../components/balloon-button/BalloonButton';
+import NavBar from '../../components/nav-bar/NavBar';
 
 function Home() {
   return (
     <div className = 'w-full h-screen overflow-hidden bg-dark'>
+      <div className = 'container flex-row w-full pl-12 mt-8'>
+        <NavBar classNames = 'flex justify-between' />
+      </div>
       <div className = 'container flex flex-row justify-center pl-12'>
         <div className = 'flex flex-col justify-center w-1/2 h-screen'>
           <div className = 'flex flex-col justify-center h-full'> 

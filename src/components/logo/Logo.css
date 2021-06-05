@@ -2,8 +2,4 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
-  span {
-    font-family: 'Alata', 'Roboto', sans-serif;
-  }
-}
+@layer components {}

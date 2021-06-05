@@ -7,6 +7,11 @@
   src: local('Alata'), url(./fonts/Alata/Alata-Regular.ttf) format('truetype');
 }
 
+@font-face {
+  font-family: 'Roboto';
+  src: local('Roboto'), url(./fonts/Roboto/Roboto-Regular.ttf) format('truetype');
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -39,6 +44,14 @@ code {
 
 .bg-dark {
   background-color: #171c22;
+}
+
+.alata-font {
+  font-family: 'Alata', sans-serif;
+}
+
+.roboto-font {
+  font-family: 'Roboto', sans-serif;
 }
 
 .rotate-135 {

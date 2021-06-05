@@ -21,6 +21,26 @@ code {
     monospace;
 }
 
+.bg-primary {
+  background-color: #009900;
+}
+
+.bg-secondary {
+  background-color: #252C34;
+}
+
+.bg-secondary-dark {
+  background-color: #1F262E;
+}
+
+.bg-tertiary {
+  background-color: #3D2FCF;
+}
+
+.bg-dark {
+  background-color: #171c22;
+}
+
 .rotate-135 {
   transform: rotate(135deg);
 }

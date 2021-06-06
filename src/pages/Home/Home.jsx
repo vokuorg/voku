@@ -13,15 +13,15 @@ function Home() {
         <div className = 'flex flex-col justify-center w-1/2 h-screen'>
           <div className = 'flex flex-col justify-center h-full'> 
             <h1 className = 'mb-4 text-5xl font-bold leading-snug text-left text-white roboto-font'>Speak Esperanto With Someone Around The World<font className = 'color-primary'>.</font></h1>
-            <p className = 'w-9/12 mb-6 text-2xl leading-normal text-left text-gray-400 roboto-font'>Be part of the hub of Esperanto speakers and promote this beautiful language.</p>
+            <p className = 'w-9/12 mb-6 text-2xl leading-normal text-left text-gray-light roboto-font'>Be part of the hub of Esperanto speakers and promote this beautiful language.</p>
             <div className = 'flex justify-start space-x-5'>
               <BalloonButton
-                classNames = 'text-3xl text-white roboto-font font-medium bg-primary border-primary'
+                classNames = 'text-3xl text-white roboto-font font-medium bg-esperanto border-esperanto'
                 side = 'left'
                 text = 'Random Call'
               />
               <BalloonButton
-                classNames = 'text-3xl text-white roboto-font font-medium bg-secondary border-secondary'
+                classNames = 'text-3xl text-white roboto-font font-medium bg-dark-tertiary border-dark-tertiary'
                 side = 'right'
                 text = 'Call Friend'
               />

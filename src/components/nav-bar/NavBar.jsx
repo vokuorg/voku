@@ -13,28 +13,28 @@ function NavBar( {classNames} ) {
                     <Logo textColor = 'white' />
                 </div>
                 <a href="http://localhost:3000/"
-                    className = 'inline-block p-4 flex-1 text-gray-400 text-2xl'>
+                    className = 'flex-1 inline-block p-4 text-2xl text-gray-light'>
                     About
                 </a>
                 <a href="http://localhost:3000/"
-                    className = 'inline-block p-4 flex-1 text-gray-400 text-2xl'>
+                    className = 'flex-1 inline-block p-4 text-2xl text-gray-light'>
                     Donate
                 </a>
                 <a href="https://github.com/videovoko/videovoko-org"
                     target = "_blank"
                     rel = "noopener noreferrer"
-                    className = 'inline-block p-4 flex-1 text-gray-400 text-2xl'>
+                    className = 'flex-1 inline-block p-4 text-2xl text-gray-light'>
                     GitHub
                 </a>
             </div>
-            <div className = 'flex mr-32 inline-block space-x-5 pr-3'>
+            <div className = 'flex inline-block pr-3 mr-32 space-x-5'>
                 <BalloonButton
-                    classNames = 'bg-trasparent text-white roboto-font text-sm border-4 border-secondary h-10 py-1 mt-2'
+                    classNames = 'bg-trasparent text-white roboto-font text-sm border-4 border-gray h-10 py-1 mt-2'
                     side = "left"
                     text = "Sign In"
                 />
                 <BalloonButton
-                    classNames = 'bg-tertiary text-white roboto-font text-sm border-tertiary h-10 py-1 mt-2'
+                    classNames = 'bg-secondary text-white roboto-font text-sm border-secondary h-10 py-1 mt-2'
                     side = "right"
                     text = "Sign Up"
                 />

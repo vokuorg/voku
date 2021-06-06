@@ -26,66 +26,6 @@ code {
     monospace;
 }
 
-.bg-primary {
-  background-color: #009900;
-}
-
-.color-primary {
-  color: #009900;
-}
-
-.border-primary {
-  border-color: #009900;
-}
-
-.bg-secondary {
-  background-color: #252C34;
-}
-
-.color-secondary {
-  color: #252C34;
-}
-
-.border-secondary {
-  border-color: #252C34;
-}
-
-.bg-secondary-dark {
-  background-color: #1F262E;
-}
-
-.color-secondary-dark {
-  color: #1F262E;
-}
-
-.border-secondary-dark {
-  border-color: #1F262E;
-}
-
-.bg-tertiary {
-  background-color: #3D2FCF;
-}
-
-.color-tertiary {
-  color: #3D2FCF;
-}
-
-.border-tertiary {
-  border-color: #3D2FCF;
-}
-
-.bg-dark {
-  background-color: #171c22;
-}
-
-.color-dark {
-  color: #171c22;
-}
-
-.border-dark {
-  border-color: #171c22;
-}
-
 .alata-font {
   font-family: 'Alata', sans-serif;
 }

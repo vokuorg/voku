@@ -14,39 +14,43 @@ function Chat() {
           <ChatMessage
             text="Hola mundo"
             side="left"
+            classNames="bg-gray"
           />
 
           <ChatMessage
             text="Cómo andas?"
             side="left"
+            classNames="bg-gray"
           />
 
           <ChatMessage
             text="Test :)"
             side="left"
+            classNames="bg-gray"
           />
 
           <ChatMessage
             text="Este es un mensaje de prueba"
             side="left"
+            classNames="bg-gray"
           />
 
           <ChatMessage
             text="Muy bien, estoy de acuerdo"
             side="right"
-            color="bg-green-500"
+            classNames="bg-primary"
           />
 
           <ChatMessage
             text="Hola mundo!"
             side="right"
-            color="bg-green-500"
+            classNames="bg-primary"
           />
 
           <ChatMessage
             text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ut suscipit tellus, in ultrices ligula. Nullam tortor urna, placerat non eros laoreet, consequat luctus nisi. Integer sapien eros, varius at massa non, venenatis ornare odio. Etiam egestas cursus eleifend. Nunc vitae luctus lorem. Cras aliquet nibh magna, quis ultrices erat porta quis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean interdum eget erat vitae pharetra. Sed elementum efficitur fermentum. Aenean mi lorem, tristique bibendum sem sed, pharetra lacinia elit."
             side="right"
-            color="bg-green-500"
+            classNames="bg-primary"
           />
         </div>
 

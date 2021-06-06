@@ -7,7 +7,7 @@ import CallControls from '../../components/call-controls/CallControls';
 
 function CallRoom() {
   return (
-    <div className="grid w-full h-screen grid-cols-8 overflow-hidden bg-gray-800">
+    <div className="grid w-full h-screen grid-cols-8 overflow-hidden bg-dark">
       <div className="flex flex-col h-full col-span-6 main-panel">
         <div className="py-3">
           <Logo textColor="white" />
@@ -32,7 +32,7 @@ function CallRoom() {
         </div>
       </div>
 
-      <div className="h-screen col-span-2 text-white bg-gray-700 rounded-l-lg side-panel">
+      <div className="h-screen col-span-2 text-white rounded-l-lg bg-dark-tertiary side-panel">
         <Chat />
         <span></span>
       </div>

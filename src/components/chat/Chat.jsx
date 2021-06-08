@@ -6,6 +6,10 @@ import '../../index.css';
 import './Chat.css'
 
 function Chat() {
+  const handleChatInput = (message) => {
+    console.log('M: ' + message);
+  }
+
   return (
       <div className="flex flex-col w-full h-full overflow-hidden">
         <div className="flex flex-col h-full px-3 pb-1 overflow-x-hidden overflow-y-auto">
@@ -56,6 +60,7 @@ function Chat() {
 
         <div className="w-full">
           <ChatInput
+            onSend={handleChatInput}
             placeholder="Aa"
           />
         </div>

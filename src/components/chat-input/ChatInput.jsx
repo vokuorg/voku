@@ -21,7 +21,8 @@ function ChatInput({ placeholder, onSend }) {
   const handleSubmit = (e) => {
     if (e) e.preventDefault();
     
-    onSend(message);
+    if (message.trim()) onSend(message);
+    
     setMessage('');
   };
 

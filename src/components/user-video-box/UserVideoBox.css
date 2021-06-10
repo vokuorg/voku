@@ -9,8 +9,21 @@
     -moz-transform:rotateY(180deg); /* Firefox */
   }
 
-  .video-container {
-    width: 50vh;
-    height: 50vh;
+  .medium-size {
+    width: 40%;
+  }
+
+  .medium-size:before {
+    padding-top: 100%;
+    content: "";
+  }
+
+  .full-size {
+    height: 97%;
+  }
+
+  .full-size:before {
+    padding-left: 100%;
+    content: "";
   }
 }

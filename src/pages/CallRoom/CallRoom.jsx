@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { MediaState } from '../../contexts/Media/MediaContext';
+import { MediaProvider } from '../../contexts/Media/Media';
 import { SignalProvider } from '../../contexts/Signal/Signal';
 
 import Logo from '../../components/logo/Logo';
@@ -10,7 +10,7 @@ import CallControls from '../../components/call-controls/CallControls';
 
 function CallRoom() {
   return (
-    <MediaState>
+    <MediaProvider>
       <SignalProvider>
         <div className="grid w-full h-screen grid-cols-8 overflow-hidden bg-dark">
           <div className="flex flex-col h-full col-span-6 main-panel">
@@ -43,7 +43,7 @@ function CallRoom() {
           </div>
         </div>
       </SignalProvider>
-    </MediaState>
+    </MediaProvider>
   );
 }
 

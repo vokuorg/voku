@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { useContext } from 'react';
-import { MediaContext } from '../../contexts/Media/MediaContext';
+import { MediaContext } from '../../contexts/Media/Media';
 
 import '../../index.css';
 import './UserVideoBox.css';

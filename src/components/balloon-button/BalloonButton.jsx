@@ -2,9 +2,9 @@ import React from 'react'
 //CSS
 import './BalloonButton.css'
 
-const BalloonButton = ({classNames, side, text}) => {
+const BalloonButton = ({ side, text, classNames, onClick }) => {
     return (
-        <button className={ `balloon ${side} ${classNames}` }>
+        <button onClick={onClick} className={ `balloon ${side} ${classNames}` }>
             { text }
         </button>
     )

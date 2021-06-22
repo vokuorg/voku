@@ -1,4 +1,7 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
+
+import { getRoomId } from '../../utils/identify'
 
 import { AppContext } from '../../contexts/AppContext/AppContext';
 
@@ -14,7 +17,9 @@ function CallRoom() {
     <div className="grid w-full h-screen grid-cols-8 overflow-hidden bg-dark">
       <div className="flex flex-col h-full col-span-6 main-panel">
         <div className="py-3">
-          <Logo textColor="white" />
+          <Link to="/">
+            <Logo textColor="white" />
+          </Link>
         </div>
 
         <div className="flex flex-wrap content-center justify-center w-full h-full space-x-8 video-area">
@@ -38,7 +43,13 @@ function CallRoom() {
         </div>
       </div>
 
-      <div className="h-screen col-span-2 text-white rounded-l-lg bg-dark-tertiary side-panel">
+      <div className="flex flex-col h-full col-span-2 overflow-hidden text-white rounded-l-lg bg-dark-tertiary side-panel">
+        <div className="py-3 text-xl border-b-2 border-solid border-gray">
+          Room ID:
+          <span className="ml-3 font-extrabold text-secondary">
+           { getRoomId() }
+          </span>
+        </div>
         <Chat />
         <span></span>
       </div>

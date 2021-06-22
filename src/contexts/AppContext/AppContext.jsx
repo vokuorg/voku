@@ -1,4 +1,4 @@
-import React, { createContext, useState, useRef, useEffect } from 'react';
+import React, { createContext, useState, useRef } from 'react';
 import Peer from 'simple-peer';
 
 import { firestore } from '../../firebase';
@@ -13,14 +13,14 @@ const AppContextProvider = ({ children }) => {
   // ║                       Peer Module                        ║                            
   // ╚══════════════════════════════════════════════════════════╝
 
-  let peer;
+  let peer = useRef(null);
 
   // Set the peer configuration
   const setPeer = (isInitiator) => {
-    peer = new Peer({
+    peer.current = new Peer({
       initiator: isInitiator,
       trickle: false,
-      stream: localStream,
+      stream: localStream.current,
       config: {
         iceServers: [
           { urls: "stun:stun1.l.google.com:19302" },
@@ -30,20 +30,22 @@ const AppContextProvider = ({ children }) => {
       }
     });
 
-    peer.on('connect', () => {
+    console.log('PEER'); // --------------------------------------
+
+    peer.current.on('connect', () => {
       stopListenAnswer();
       deleteSignal(getRoomId());
       
       console.log('CONNECTED!');
     });
 
-    peer.on('signal', async data => {
+    peer.current.on('signal', async data => {
       let sdp = JSON.stringify(data);
 
       if (data.sdp) {
         let roomId = getRoomId();
 
-        if (peer.initiator) {
+        if (peer.current.initiator) {
           await pushOffer(roomId, sdp, callType);
           setStopListenAnswer(listenAnswer(roomId, call));
         } else {
@@ -52,47 +54,71 @@ const AppContextProvider = ({ children }) => {
       }
     });
 
-    peer.on('stream', stream => {
-      setGuestStream(stream);
+    peer.current.on('stream', stream => {
+      guestStream.current = stream;
+      setGuestMediaStatus({ video: true, audio: true });
     });
 
-    peer.on('data', data => {
-      addMessage('guest', data);
+    peer.current.on('data', data => {
+      let decodedData = new TextDecoder().decode(data);
+      let type = decodedData[0];
+      let corpus = decodedData.substr(2);
+
+      switch (type) {
+        case 'm': // Message
+          addMessage('guest', corpus);
+          break;
+          
+        case 's': // Status
+          let status = JSON.parse(corpus);
+          setGuestMediaStatus(status);
+          break;
+
+        case 'i': // Info
+          //setGuestInfo(JSON.parse(corpus));
+          //break;
+        default:
+          break;
+      };
     });
 
-    peer.on('error', (err) => {
+    peer.current.on('error', (err) => {
       console.log('Connection error!');
 
       console.log(err);
     });
 
-    peer.on('close', () => {
+    peer.current.on('close', () => {
       console.warn('Connection closed');
 
-      peer.destroy();
+      peer.current.destroy();
 
       if (callType === 'random') {
         randomCall();
-      } else {
+      } else if (window.location.hash) {
         waitSignalServerConnection(reconnectCall);
       }
     });
   };
 
+  const isPeerSetted = () => !!peer.current;
+
   const signalPeer = (sdp) => {
-    peer.signal(sdp);
+    peer.current.signal(sdp);
   };
 
   const isPeerConnected = () => {
-    return peer.connected;
+    return peer.current.connected;
   };
 
   const sendToPeer = (data) => {
-    peer.send(data);
+    if (isPeerConnected()) peer.current.send(data);
   };
 
   const destroyPeer = () => {
-    peer.destroy();
+    peer.current.destroy();
+
+    stopListenAnswer();
   };
 
   
@@ -103,7 +129,7 @@ const AppContextProvider = ({ children }) => {
   const callsDB = firestore.collection('calls');
 
   // This stores a function that is redefined to stop the onSnapshot event for SDP answer.
-  const listenAnswerFinisher = useRef(() => console.log('Finisher has not yet been defined...'));
+  const listenAnswerFinisher = useRef(() => 0);
 
   const setStopListenAnswer = (finisher) => {
     listenAnswerFinisher.current = finisher;
@@ -111,6 +137,8 @@ const AppContextProvider = ({ children }) => {
 
   const stopListenAnswer = () => {
     listenAnswerFinisher.current();
+
+    listenAnswerFinisher.current = () => 0;
   };
 
   const waitSignalServerConnection = async (callback) => {
@@ -228,26 +256,27 @@ const AppContextProvider = ({ children }) => {
     if (randomSignal) {
       setRoomId(randomSignal.id);
 
-      setPeer(false);
+      await getLocalStream(setPeer, false);
+
       signalPeer(JSON.parse(randomSignal.offer));
     } else {
       startRoom('random');
     }
   };
 
-  const startRoom = (type, id) => {
+  const startRoom = (type, id = generateId()) => {
     callType = type;
 
-    if (id) setRoomId(id);
-    else setRoomId(generateId());
+    setRoomId(id);
 
-    setPeer(true);
+    getLocalStream(setPeer, true);
   };
 
   const joinRoom = (id) => {
     setRoomId(id);
+
+    getLocalStream(setPeer, false);
     
-    setPeer(false);
     getOffer(id).then(offer => call(offer));
   };
 
@@ -266,7 +295,8 @@ const AppContextProvider = ({ children }) => {
   };
 
   const sendMessage = (message) => {
-    sendToPeer(message);
+    sendToPeer('m=' + message);
+    
     addMessage('me', message);
   };
 
@@ -275,67 +305,83 @@ const AppContextProvider = ({ children }) => {
   // ║                       Media Module                       ║
   // ╚══════════════════════════════════════════════════════════╝
 
-  const [localStream, setLocalStream] = useState();
-  const [guestStream, setGuestStream] = useState();
+  const localStream = useRef(null);
+  const guestStream = useRef(null);
   const [localMediaStatus, setLocalMediaStatus] = useState({video: false, audio: false });
   const [guestMediaStatus, setGuestMediaStatus] = useState({ video: false, audio: false });
-
-  useEffect(() => {
-    getLocalStream();
-  });
   
-  const getLocalStream = () => {
-    navigator.mediaDevices.getUserMedia({
+  const getLocalStream = async (callback, callbackParam) => {
+    return navigator.mediaDevices.getUserMedia({
       video: true,
       audio: true
     }).then(stream => {
-      setLocalStream(stream);
+      localStream.current = stream;
       setLocalMediaStatus({ video: true, audio: true });
+
+      callback(callbackParam);
     }).catch(err => console.log(err));
   };
+
+  const stopLocalStream = () => {
+    localStream.current.getTracks().forEach(track => track.stop());
+
+    //setLocalMediaStatus({ video: false, audio: false });
+  };
+
+  // Send a message to the other user
+  // to update his guest's status
+  const sendStatus = (status) => {
+    let data = 's=' + JSON.stringify(status);
+    sendToPeer(data);
+  };
+  
   
   const enableLocalVideo = () => {
-    localStream.getVideoTracks()[0].enabled = true;
-    setLocalMediaStatus(prevStatus => ({ ...prevStatus, video: true }));
-  };
+    localStream.current.getVideoTracks()[0].enabled = true;
 
-  const enableGuestVideo = () => {
-    setGuestMediaStatus(prevStatus => ({ ...prevStatus, video: true }));
+    setLocalMediaStatus(prevStatus => {
+      let newStatus = { ...prevStatus, video: true };
+      sendStatus(newStatus);
+      return newStatus;
+    })
   };
-
   
   const enableLocalAudio = () => {
-    localStream.getAudioTracks()[0].enabled = true;
-    setLocalMediaStatus(prevStatus => ({ ...prevStatus, audio: true }));
-  };
-  
-  const enableGuestAudio = () => {
-    setGuestMediaStatus(prevStatus => ({ ...prevStatus, audio: true }));
+    localStream.current.getAudioTracks()[0].enabled = true;
+
+    setLocalMediaStatus(prevStatus => {
+      let newStatus = { ...prevStatus, audio: true };
+      sendStatus(newStatus);
+      return newStatus;
+    })
   };
   
   
   const disableLocalVideo = () => {
-    localStream.getVideoTracks()[0].enabled = false;
-    setLocalMediaStatus(prevStatus => ({ ...prevStatus, video: false }));
-  };
+    localStream.current.getVideoTracks()[0].enabled = false;
 
-  const disableGuestVideo = () => {
-    setGuestMediaStatus(prevStatus => ({ ...prevStatus, video: false }));
+    setLocalMediaStatus(prevStatus => {
+      let newStatus = { ...prevStatus, video: false };
+      sendStatus(newStatus);
+      return newStatus;
+    })
   };
-
   
   const disableLocalAudio = () => {
-    localStream.getAudioTracks()[0].enabled = false;
-    setLocalMediaStatus(prevStatus => ({ ...prevStatus, audio: false }));
-  };
-  
-  const disableGuestAudio = () => {
-    setGuestMediaStatus(prevStatus => ({ ...prevStatus, audio: false }));
+    localStream.current.getAudioTracks()[0].enabled = false;
+    
+    setLocalMediaStatus(prevStatus => {
+      let newStatus = { ...prevStatus, audio: false };
+      sendStatus(newStatus);
+      return newStatus;
+    })
   };
 
 
   return (
     <AppContext.Provider value={{
+      isPeerSetted, // Peer Module
+      destroyPeer,
       callType, // Call Module's Start
       call,
       finishCall,
@@ -344,9 +390,9 @@ const AppContextProvider = ({ children }) => {
       startRoom,
       joinRoom, // Call Module's End
       Messages, // Call Messages Module's Start
-      addMessage,
       sendMessage, // Call Messages Module's End
       getLocalStream, // Media Module's Start
+      stopLocalStream,
       localStream,
       guestStream,
       localMediaStatus,

@@ -30,28 +30,28 @@ function UserVideoBox({ user, name, color, onClickVideo }) {
 
   return (
     <div className="relative flex flex-wrap content-center justify-center border-2 border-solid rounded-lg bg-dark-secondary border-gray medium-size">
-      { !mediaStatus.video
-        ? <div
-            className={
-              `${color || ''}
-              flex flex-wrap content-center justify-center w-24 h-24 my-auto text-5xl text-white rounded-full`
-            }
-          >
-            {name[0]}
-          </div>
-      
-
-        : <video
-            id={`${user}-video`}
-            ref={videoRef}
-            onClick={onClickVideo}
-            className={
-              `${user === 'local' ? 'mirrored' : ''}
-              w-full h-full bg-black rounded-lg`
-            }
-            muted={user === 'local'}
-          ></video>
+      { !mediaStatus.video &&
+        <div
+          className={
+            `${color || ''}
+            flex flex-wrap content-center justify-center w-24 h-24 my-auto text-5xl text-white rounded-full`
+          }
+        >
+          {name[0]}
+        </div>
       }
+      
+      <video
+        id={`${user}-video`}
+        ref={videoRef}
+        onClick={onClickVideo}
+        className={
+          `${user === 'local' ? 'mirrored' : ''}
+          ${!mediaStatus.video ? 'hidden' : ''}
+          w-full h-full bg-black rounded-lg`
+        }
+        muted={user === 'local'}
+      ></video>
 
       <div className="absolute bottom-0 left-0 px-2 py-1 text-white rounded-tr-lg rounded-bl-md bg-dark-tertiary">
         {name}

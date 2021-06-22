@@ -15,20 +15,28 @@ function NavBar({ classNames }) {
         </Link>
 
         <Link to="/call" 
-          className="mt-auto text-2xl align-bottom text-gray-light hover:text-secondary" href="#">
+          className="hidden mt-auto text-2xl align-bottom text-gray-light hover:text-secondary" href="#">
           About
         </Link>
 
-        <a className="mt-auto text-2xl text-gray-light hover:text-secondary" href="#">
+        <a
+          href="https://github.com/videovoko/videovoko-org/"
+          className="mt-auto text-2xl text-gray-light hover:text-secondary"
+          target="_blank" rel="noopener noreferrer"
+        >
           Donate
         </a>
         
-        <a className="mt-auto text-2xl text-gray-light hover:text-secondary" href="https://github.com/videovoko/videovoko-org" target="_blank" rel="noopener noreferrer">
+        <a
+          href="https://github.com/videovoko/videovoko-org/"
+          className="mt-auto text-2xl text-gray-light hover:text-secondary" href="https://github.com/videovoko/videovoko-org"
+          target="_blank" rel="noopener noreferrer"
+        >
           GitHub
         </a>
       </div>
 
-      <div className="space-x-5">
+      <div className="hidden space-x-5">
         <BalloonButton classNames="bg-trasparent text-white font-semibold roboto-font text-sm border-4 border-gray h-10 py-1"
           side="left" text="Sign In" />
         <BalloonButton classNames="bg-secondary text-white font-semibold roboto-font text-sm border-secondary h-10 py-1"

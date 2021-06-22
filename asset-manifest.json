@@ -1,25 +1,25 @@
 {
   "files": {
     "main.css": "/videovoko-org/static/css/main.d80c1595.chunk.css",
-    "main.js": "/videovoko-org/static/js/main.88e3881d.chunk.js",
-    "main.js.map": "/videovoko-org/static/js/main.88e3881d.chunk.js.map",
+    "main.js": "/videovoko-org/static/js/main.6f6147e0.chunk.js",
+    "main.js.map": "/videovoko-org/static/js/main.6f6147e0.chunk.js.map",
     "runtime-main.js": "/videovoko-org/static/js/runtime-main.81855cf1.js",
     "runtime-main.js.map": "/videovoko-org/static/js/runtime-main.81855cf1.js.map",
-    "static/js/2.df8c4a1c.chunk.js": "/videovoko-org/static/js/2.df8c4a1c.chunk.js",
-    "static/js/2.df8c4a1c.chunk.js.map": "/videovoko-org/static/js/2.df8c4a1c.chunk.js.map",
+    "static/js/2.e3f4e2c2.chunk.js": "/videovoko-org/static/js/2.e3f4e2c2.chunk.js",
+    "static/js/2.e3f4e2c2.chunk.js.map": "/videovoko-org/static/js/2.e3f4e2c2.chunk.js.map",
     "static/js/3.8f930fb7.chunk.js": "/videovoko-org/static/js/3.8f930fb7.chunk.js",
     "static/js/3.8f930fb7.chunk.js.map": "/videovoko-org/static/js/3.8f930fb7.chunk.js.map",
     "index.html": "/videovoko-org/index.html",
     "static/css/main.d80c1595.chunk.css.map": "/videovoko-org/static/css/main.d80c1595.chunk.css.map",
-    "static/js/2.df8c4a1c.chunk.js.LICENSE.txt": "/videovoko-org/static/js/2.df8c4a1c.chunk.js.LICENSE.txt",
+    "static/js/2.e3f4e2c2.chunk.js.LICENSE.txt": "/videovoko-org/static/js/2.e3f4e2c2.chunk.js.LICENSE.txt",
     "static/media/index.css": "/videovoko-org/static/media/Roboto-Regular.a8d6ac03.ttf",
     "static/media/home-illustration.8bf82fca.svg": "/videovoko-org/static/media/home-illustration.8bf82fca.svg",
     "static/media/logo.c9aed868.svg": "/videovoko-org/static/media/logo.c9aed868.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.81855cf1.js",
-    "static/js/2.df8c4a1c.chunk.js",
+    "static/js/2.e3f4e2c2.chunk.js",
     "static/css/main.d80c1595.chunk.css",
-    "static/js/main.88e3881d.chunk.js"
+    "static/js/main.6f6147e0.chunk.js"
   ]
 }

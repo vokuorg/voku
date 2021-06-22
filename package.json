@@ -2,7 +2,7 @@
   "name": "videovoko",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://www.videovoko.org/call",
+  "homepage": "http://videovoko.github.io/videovoko-org",
   "dependencies": {
     "@craco/craco": "^6.1.2",
     "@testing-library/jest-dom": "^5.11.4",

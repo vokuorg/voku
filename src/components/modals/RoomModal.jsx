@@ -36,7 +36,7 @@ const RoomModal = ({ id, title }) => {
         <div classNames="text-center">
           <Button
             onClick={ _startRoom }
-            classNames='h-10 px-20 text-xl bg-primary'
+            classNames='h-10 px-20 text-xl bg-primary hover:bg-primary-dark'
           >
             Start Room
           </Button>
@@ -56,7 +56,7 @@ const RoomModal = ({ id, title }) => {
 
           <Button
             onClick={ _joinRoom }
-            classNames='w-auto h-10 text-xl bg-secondary'
+            classNames='w-auto h-10 text-xl bg-secondary hover:bg-secondary-dark'
             disabled={ isValidId }
           >
             Join Room

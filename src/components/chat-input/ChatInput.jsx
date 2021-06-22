@@ -29,7 +29,7 @@ function ChatInput({ placeholder, onSend }) {
   return (
     <form onSubmit={handleSubmit} className="flex p-3 border-t-2 border-gray">
       <textarea
-        className="w-full h-10 px-4 py-1 mr-2 overflow-auto border-2 border-solid rounded-lg resize-none border-gray bg-dark-secondary focus:outline-none"
+        className="w-full h-10 px-4 py-1 mr-2 overflow-auto border-2 border-solid rounded-lg resize-none border-gray bg-dark-secondary focus:outline-none focus:border-primary"
         value={message}
         onChange={handleChange}
         onKeyDown={handleKeyDown}

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import { getRoomId } from '../../utils/identify'
 
@@ -11,7 +11,15 @@ import UserVideoBox from '../../components/user-video-box/UserVideoBox';
 import CallControls from '../../components/call-controls/CallControls';
 
 function CallRoom() {
-  const { guestStream } = useContext(AppContext);
+  const { joinRoom, guestStream } = useContext(AppContext);
+
+  const history = useHistory();
+
+  console.log(history);
+
+  if (history.length < 3) {
+    joinRoom(getRoomId());
+  }
   
   return (
     <div className="grid w-full h-screen grid-cols-8 overflow-hidden bg-dark">

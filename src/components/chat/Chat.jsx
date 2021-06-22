@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 
-import { CallMessagesContext } from '../../contexts/CallMessages/CallMessages';
+import { AppContext } from '../../contexts/AppContext/AppContext';
 
 import ChatMessage from '../chat-message/ChatMessage';
 import ChatInput from '../chat-input/ChatInput';
@@ -9,10 +9,10 @@ import '../../index.css';
 import './Chat.css'
 
 function Chat() {
-  const { Messages, addMessage } = useContext(CallMessagesContext);
+  const { Messages, sendMessage } = useContext(AppContext);
 
   const handleChatInput = (message) => {
-    addMessage('me', message);
+    sendMessage(message);
   }
 
   const messageList = Messages.map((message, index) => {
@@ -20,10 +20,10 @@ function Chat() {
 
     return (
       <ChatMessage
-        kk={index}
-        text={message.text}
-        side={localUser ? 'right' : 'left'}
-        classNames={localUser ? 'bg-primary' : 'bg-gray'}
+        kk={ index }
+        text={ message.text }
+        side={ localUser ? 'right' : 'left' }
+        classNames={ localUser ? 'bg-primary' : 'bg-gray' }
       />
     );
   });

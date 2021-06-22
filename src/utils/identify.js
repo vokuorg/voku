@@ -11,11 +11,15 @@ const generateId = () => {
 };
 
 const setRoomId = (id) => {
-  window.location.hash = id;
-}
+  if (window.location.hash) {
+    window.history.replaceState(null, null, `#${id}`);
+  } else {
+    window.location.hash = id;
+  }
+};
 
 const getRoomId = () => {
   return window.location.hash.substr(1);
-}
+};
 
 export { generateId, setRoomId, getRoomId };

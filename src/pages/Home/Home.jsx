@@ -1,9 +1,36 @@
-import React from 'react';
+import React, { useContext } from 'react';
+
+import { AppContext } from '../../contexts/AppContext/AppContext';
+
 import { ReactComponent as HomeIllustration } from '../../assets/home-illustration.svg';
+
 import BalloonButton from '../../components/balloon-button/BalloonButton';
 import NavBar from '../../components/nav-bar/NavBar';
+import RoomModal from '../../components/modals/RoomModal';
 
 function Home() {
+  const {
+    isPeerSetted,
+    destroyPeer,
+    randomCall,
+    stopLocalStream
+  } = useContext(AppContext);
+
+  const openRoomModal = () => {
+    document.getElementById('roomModal').click();
+  };
+
+  const _randomCall = () => {
+    randomCall();
+  }
+
+
+  if (isPeerSetted()) {
+    destroyPeer();
+    stopLocalStream();
+  }
+
+  
   return (
     <div className="flex flex-col w-full h-screen px-20 bg-dark">
       <NavBar classNames="" />
@@ -23,10 +50,10 @@ function Home() {
             </p>
 
             <div className="flex justify-start space-x-5">
-              <BalloonButton classNames="text-3xl text-white roboto-font font-medium bg-esperanto border-esperanto"
+              <BalloonButton onClick={ _randomCall } classNames="text-3xl text-white roboto-font font-medium bg-esperanto border-esperanto"
                 side="left" text="Random Call" />
                 
-              <BalloonButton classNames="text-3xl text-white roboto-font font-medium bg-dark-tertiary border-dark-tertiary"
+              <BalloonButton onClick={ openRoomModal } classNames="text-3xl text-white roboto-font font-medium bg-dark-tertiary border-dark-tertiary"
                 side="right" text="Call Friend" />
             </div>
           </div>
@@ -43,6 +70,8 @@ function Home() {
           © 2021 videovoko
         </p>
       </div>
+
+      <RoomModal id="roomModal" title="Call Friend" />
     </div>
   );
 }

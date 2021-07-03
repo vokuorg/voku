@@ -30,8 +30,6 @@ const AppContextProvider = ({ children }) => {
       }
     });
 
-    console.log('PEER'); // --------------------------------------
-
     peer.current.on('connect', () => {
       stopListenAnswer();
       deleteSignal(getRoomId());
@@ -46,7 +44,7 @@ const AppContextProvider = ({ children }) => {
         let roomId = getRoomId();
 
         if (peer.current.initiator) {
-          await pushOffer(roomId, sdp, callType);
+          await pushOffer(roomId, sdp, callType.current);
           setStopListenAnswer(listenAnswer(roomId, call));
         } else {
           await pushAnswer(roomId, sdp);
@@ -83,7 +81,7 @@ const AppContextProvider = ({ children }) => {
     });
 
     peer.current.on('error', (err) => {
-      console.log('Connection error!');
+      console.error('Connection error!');
 
       console.log(err);
     });
@@ -93,7 +91,7 @@ const AppContextProvider = ({ children }) => {
 
       peer.current.destroy();
 
-      if (callType === 'random') {
+      if (callType.current === 'random') {
         randomCall();
       } else if (window.location.hash) {
         waitSignalServerConnection(reconnectCall);
@@ -226,7 +224,7 @@ const AppContextProvider = ({ children }) => {
   // ║                       Call Module                        ║
   // ╚══════════════════════════════════════════════════════════╝
 
-  let callType = undefined;
+  const callType = useRef(undefined);
 
   // Call to other user by his SDP description
   const call = (sdp) => {
@@ -265,7 +263,7 @@ const AppContextProvider = ({ children }) => {
   };
 
   const startRoom = (type, id = generateId()) => {
-    callType = type;
+    callType.current = type;
 
     setRoomId(id);
 
@@ -273,6 +271,8 @@ const AppContextProvider = ({ children }) => {
   };
 
   const joinRoom = async (id) => {
+    callType.current = 'direct';
+
     setRoomId(id);
 
     await getLocalStream(setPeer, false);

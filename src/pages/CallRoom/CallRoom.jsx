@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { getRoomId } from '../../utils/identify'
 
@@ -11,11 +11,9 @@ import UserVideoBox from '../../components/user-video-box/UserVideoBox';
 import CallControls from '../../components/call-controls/CallControls';
 
 function CallRoom() {
-  const { joinRoom, guestStream } = useContext(AppContext);
+  const { callType, joinRoom, guestStream } = useContext(AppContext);
 
-  const history = useHistory();
-
-  if (history.length < 3) {
+  if (!callType.current) {
     joinRoom(getRoomId());
   }
   

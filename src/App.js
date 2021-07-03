@@ -14,9 +14,8 @@ import CallRoom from './pages/CallRoom/CallRoom';
 function App() {
   return (
     <div className="App">
-      <AppContextProvider>
-
-        <HashRouter hashType={ 'noslash' }>
+      <HashRouter hashType={ 'noslash' }>
+        <AppContextProvider>
           <Switch>
             <Route
               exact
@@ -34,9 +33,8 @@ function App() {
               <Home />
             </Route>
           </Switch>
-        </HashRouter>
-        
-      </AppContextProvider>
+        </AppContextProvider>
+      </HashRouter>
     </div>
   );
 }

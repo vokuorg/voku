@@ -1,4 +1,5 @@
 import React, { createContext, useState, useRef } from 'react';
+import { useHistory } from 'react-router-dom';
 import Peer from 'simple-peer';
 
 import { firestore } from '../../firebase';
@@ -7,7 +8,10 @@ import { generateId, setRoomId, getRoomId } from '../../utils/identify';
 
 const AppContext = createContext();
 
+
 const AppContextProvider = ({ children }) => {
+
+  const history = useHistory();
 
   // ╔══════════════════════════════════════════════════════════╗
   // ║                       Peer Module                        ║                            
@@ -75,6 +79,9 @@ const AppContextProvider = ({ children }) => {
         case 'i': // Info
           //setGuestInfo(JSON.parse(corpus));
           //break;
+        case 'f':
+          finishCall(true);
+          break;
         default:
           break;
       };
@@ -233,9 +240,21 @@ const AppContextProvider = ({ children }) => {
     }
   };
 
-  const finishCall = () => {
+  const sendEndCall = () => {
+    sendToPeer('f');
+  };
+
+  const finishCall = (receivedByMessage = false) => {
+    if (!receivedByMessage) {
+      sendEndCall();
+    }
+
     destroyPeer();
     cleanMessages();
+
+    if (callType.current !== 'random') {
+      history.replace('/');
+    }
   };
 
   const reconnectCall = async () => {

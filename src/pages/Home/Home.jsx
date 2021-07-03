@@ -27,7 +27,7 @@ function Home() {
 
   if (isPeerSetted()) {
     destroyPeer();
-    stopLocalStream();
+    //stopLocalStream();
   }
 
   

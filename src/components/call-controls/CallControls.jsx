@@ -18,7 +18,7 @@ function CallControls() {
     disableLocalAudio
   } = useContext(AppContext);
 
-  const history = useHistory();
+  //const history = useHistory();
   
 
   const handleVideoButton = () => {
@@ -32,7 +32,7 @@ function CallControls() {
   }
 
   const handleFinishCallButton = () => {
-    history.replace('/');
+    //history.replace('/');
     finishCall();
   }
   

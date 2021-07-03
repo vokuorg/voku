@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import { useHistory } from 'react-router-dom';
 
 import { AppContext } from '../../contexts/AppContext/AppContext';
 
@@ -17,8 +16,6 @@ function CallControls() {
     disableLocalVideo,
     disableLocalAudio
   } = useContext(AppContext);
-
-  //const history = useHistory();
   
 
   const handleVideoButton = () => {
@@ -32,7 +29,6 @@ function CallControls() {
   }
 
   const handleFinishCallButton = () => {
-    //history.replace('/');
     finishCall();
   }
   

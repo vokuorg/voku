@@ -15,8 +15,6 @@ function CallRoom() {
 
   const history = useHistory();
 
-  console.log(history);
-
   if (history.length < 3) {
     joinRoom(getRoomId());
   }

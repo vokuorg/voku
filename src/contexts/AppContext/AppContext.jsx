@@ -235,6 +235,7 @@ const AppContextProvider = ({ children }) => {
 
   const finishCall = () => {
     destroyPeer();
+    cleanMessages();
   };
 
   const reconnectCall = async () => {
@@ -298,6 +299,10 @@ const AppContextProvider = ({ children }) => {
     sendToPeer('m=' + message);
     
     addMessage('me', message);
+  };
+
+  const cleanMessages = () => {
+    setMessages([]);
   };
 
 

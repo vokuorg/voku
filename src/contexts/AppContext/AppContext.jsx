@@ -272,10 +272,10 @@ const AppContextProvider = ({ children }) => {
     getLocalStream(setPeer, true);
   };
 
-  const joinRoom = (id) => {
+  const joinRoom = async (id) => {
     setRoomId(id);
 
-    getLocalStream(setPeer, false);
+    await getLocalStream(setPeer, false);
     
     getOffer(id).then(offer => call(offer));
   };

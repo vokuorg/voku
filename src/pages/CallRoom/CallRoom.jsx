@@ -11,7 +11,7 @@ import UserVideoBox from '../../components/user-video-box/UserVideoBox';
 import CallControls from '../../components/call-controls/CallControls';
 
 function CallRoom() {
-  const { callType, joinRoom, guestStream } = useContext(AppContext);
+  const { callType, joinRoom, peerConnection } = useContext(AppContext);
 
   if (!callType.current) {
     joinRoom(getRoomId());
@@ -33,7 +33,7 @@ function CallRoom() {
             color="bg-indigo-800"
           />
 
-          { guestStream.current &&
+          { peerConnection &&
             <UserVideoBox
               user="remote"
               name="Guest"

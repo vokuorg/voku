@@ -18,6 +18,7 @@ const AppContextProvider = ({ children }) => {
   // ╚══════════════════════════════════════════════════════════╝
 
   let peer = useRef(null);
+  const [peerConnection, setPeerConnection] = useState(false);
 
   // Set the peer configuration
   const setPeer = (isInitiator) => {
@@ -35,10 +36,34 @@ const AppContextProvider = ({ children }) => {
     });
 
     peer.current.on('connect', () => {
+      setPeerConnection(true);
+
       stopListenAnswer();
       deleteSignal(getRoomId());
       
       console.log('CONNECTED!');
+    });
+
+    peer.current.on('close', () => {
+      console.warn('Connection closed');
+
+      setPeerConnection(false);
+
+      cleanGuestMediaStream();
+
+      if (callType.current === 'random') {
+        finishCall();
+        randomCall();
+      } else if (window.location.hash) {
+        peer.current.destroy();
+        waitSignalServerConnection(reconnectCall);
+      }
+    });
+
+    peer.current.on('error', (err) => {
+      console.error('Connection error!');
+
+      console.log(err);
     });
 
     peer.current.on('signal', async data => {
@@ -83,34 +108,20 @@ const AppContextProvider = ({ children }) => {
           break;
       };
     });
-
-    peer.current.on('error', (err) => {
-      console.error('Connection error!');
-
-      console.log(err);
-    });
-
-    peer.current.on('close', () => {
-      console.warn('Connection closed');
-
-      peer.current.destroy();
-
-      if (callType.current === 'random') {
-        randomCall();
-      } else if (window.location.hash) {
-        waitSignalServerConnection(reconnectCall);
-      }
-    });
   };
 
   const isPeerSetted = () => !!peer.current;
 
-  const signalPeer = (sdp) => {
-    peer.current.signal(sdp);
+  const isPeerConnected = () => {
+    if (isPeerSetted()) {
+      return peer.current.connected;
+    } else {
+      return false;
+    }
   };
 
-  const isPeerConnected = () => {
-    return peer.current.connected;
+  const signalPeer = (sdp) => {
+    peer.current.signal(sdp);
   };
 
   const sendToPeer = (data) => {
@@ -343,6 +354,11 @@ const AppContextProvider = ({ children }) => {
     //setLocalMediaStatus({ video: false, audio: false });
   };
 
+  const cleanGuestMediaStream = () => {
+    guestStream.current = null;
+    setGuestMediaStatus({ video: false, audio: false });
+  };
+
   // Send a message to the other user
   // to update his guest's status
   const sendStatus = (status) => {
@@ -395,8 +411,10 @@ const AppContextProvider = ({ children }) => {
 
   return (
     <AppContext.Provider value={{
-      isPeerSetted, // Peer Module
-      destroyPeer,
+      peerConnection, // Peer Module's Start
+      isPeerSetted,
+      isPeerConnected,
+      destroyPeer, // Peer Module's End
       callType, // Call Module's Start
       call,
       finishCall,

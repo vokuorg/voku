@@ -79,9 +79,6 @@ const AppContextProvider = ({ children }) => {
         case 'i': // Info
           //setGuestInfo(JSON.parse(corpus));
           //break;
-        case 'f':
-          finishCall(true);
-          break;
         default:
           break;
       };
@@ -240,15 +237,7 @@ const AppContextProvider = ({ children }) => {
     }
   };
 
-  const sendEndCall = () => {
-    sendToPeer('f');
-  };
-
-  const finishCall = (receivedByMessage = false) => {
-    if (!receivedByMessage) {
-      sendEndCall();
-    }
-
+  const finishCall = () => {
     destroyPeer();
     cleanMessages();
 
@@ -272,6 +261,8 @@ const AppContextProvider = ({ children }) => {
     let randomSignal = await getRandom();
 
     if (randomSignal) {
+      callType.current = 'random';
+      
       setRoomId(randomSignal.id);
 
       await getLocalStream(setPeer, false);

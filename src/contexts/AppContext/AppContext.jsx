@@ -182,7 +182,7 @@ const AppContextProvider = ({ children }) => {
   };
   
   const getRandom = async () => {
-    let calls = await callsDB.where('type', '==', 'random').where('status', '==', 'open');
+    let calls = await callsDB.where('type', '==', 'random').where('status', '==', 'open').where('date', '>', Date.now() - 60000);
     let signal;
   
     await calls.get().then(snapshot => {
@@ -196,15 +196,34 @@ const AppContextProvider = ({ children }) => {
   
     return signal;
   };
+
+  const updateSignalDate = async (id) => {
+    await callsDB.doc(id).update({
+      date: Date.now()
+    });
+  };
+
+  const signalDateRefresher = (id, milliseconds) => {
+    setTimeout(() => {
+      if (!peerConnection) {
+        updateSignalDate(id);
+        signalDateRefresher(id, milliseconds);
+      }
+    }, milliseconds);
+  };
   
-  const pushOffer = async (id, offer, type) => {
+  const pushOffer = async (id, offer, type = 'direct') => {
     await callsDB.doc(id).set({ 
-      type: (type ? type : 'direct'),
+      type: type,
       status: 'open',
       date: Date.now(),
       offer: offer,
       answer: null
     });
+
+    if (type === 'random') {
+      signalDateRefresher(id, 60000);
+    }
   };
   
   const pushAnswer = async (id, answer) => {

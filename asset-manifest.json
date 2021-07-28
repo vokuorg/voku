@@ -1,25 +1,30 @@
 {
   "files": {
     "main.css": "/videovoko-org/static/css/main.23c7c6c5.chunk.css",
-    "main.js": "/videovoko-org/static/js/main.da816a78.chunk.js",
-    "main.js.map": "/videovoko-org/static/js/main.da816a78.chunk.js.map",
-    "runtime-main.js": "/videovoko-org/static/js/runtime-main.f5340cbb.js",
-    "runtime-main.js.map": "/videovoko-org/static/js/runtime-main.f5340cbb.js.map",
-    "static/js/2.25141d91.chunk.js": "/videovoko-org/static/js/2.25141d91.chunk.js",
-    "static/js/2.25141d91.chunk.js.map": "/videovoko-org/static/js/2.25141d91.chunk.js.map",
-    "static/js/3.487ca7e3.chunk.js": "/videovoko-org/static/js/3.487ca7e3.chunk.js",
-    "static/js/3.487ca7e3.chunk.js.map": "/videovoko-org/static/js/3.487ca7e3.chunk.js.map",
+    "main.js": "/videovoko-org/static/js/main.8a66686b.chunk.js",
+    "main.js.map": "/videovoko-org/static/js/main.8a66686b.chunk.js.map",
+    "runtime-main.js": "/videovoko-org/static/js/runtime-main.cb05c4fc.js",
+    "runtime-main.js.map": "/videovoko-org/static/js/runtime-main.cb05c4fc.js.map",
+    "static/js/2.260b6cb1.chunk.js": "/videovoko-org/static/js/2.260b6cb1.chunk.js",
+    "static/js/2.260b6cb1.chunk.js.map": "/videovoko-org/static/js/2.260b6cb1.chunk.js.map",
+    "static/js/3.e08a1d67.chunk.js": "/videovoko-org/static/js/3.e08a1d67.chunk.js",
+    "static/js/3.e08a1d67.chunk.js.map": "/videovoko-org/static/js/3.e08a1d67.chunk.js.map",
+    "static/js/4.bdb22526.chunk.js": "/videovoko-org/static/js/4.bdb22526.chunk.js",
+    "static/js/4.bdb22526.chunk.js.map": "/videovoko-org/static/js/4.bdb22526.chunk.js.map",
     "index.html": "/videovoko-org/index.html",
     "static/css/main.23c7c6c5.chunk.css.map": "/videovoko-org/static/css/main.23c7c6c5.chunk.css.map",
-    "static/js/2.25141d91.chunk.js.LICENSE.txt": "/videovoko-org/static/js/2.25141d91.chunk.js.LICENSE.txt",
+    "static/js/2.260b6cb1.chunk.js.LICENSE.txt": "/videovoko-org/static/js/2.260b6cb1.chunk.js.LICENSE.txt",
+    "static/js/3.e08a1d67.chunk.js.LICENSE.txt": "/videovoko-org/static/js/3.e08a1d67.chunk.js.LICENSE.txt",
     "static/media/index.css": "/videovoko-org/static/media/Roboto-Regular.a8d6ac03.ttf",
     "static/media/home-illustration.8bf82fca.svg": "/videovoko-org/static/media/home-illustration.8bf82fca.svg",
-    "static/media/logo.c9aed868.svg": "/videovoko-org/static/media/logo.c9aed868.svg"
+    "static/media/join.5e707cae.mp3": "/videovoko-org/static/media/join.5e707cae.mp3",
+    "static/media/logo.c9aed868.svg": "/videovoko-org/static/media/logo.c9aed868.svg",
+    "static/media/message.f132cc09.mp3": "/videovoko-org/static/media/message.f132cc09.mp3"
   },
   "entrypoints": [
-    "static/js/runtime-main.f5340cbb.js",
-    "static/js/2.25141d91.chunk.js",
+    "static/js/runtime-main.cb05c4fc.js",
+    "static/js/2.260b6cb1.chunk.js",
     "static/css/main.23c7c6c5.chunk.css",
-    "static/js/main.da816a78.chunk.js"
+    "static/js/main.8a66686b.chunk.js"
   ]
 }

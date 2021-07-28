@@ -1,10 +1,14 @@
 import React, { createContext, useState, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
+import useSound from 'use-sound';
 import Peer from 'simple-peer';
 
 import { firestore } from '../../firebase';
 
 import { generateId, setRoomId, getRoomId } from '../../utils/identify';
+
+import joinSfx from '../../sounds/join.mp3';
+import messageSfx from '../../sounds/message.mp3';
 
 const AppContext = createContext();
 
@@ -12,6 +16,9 @@ const AppContext = createContext();
 const AppContextProvider = ({ children }) => {
 
   const history = useHistory();
+
+  const [playJoinSfx] = useSound(joinSfx, { volume: 0.5 });
+  const [playMessageSfx] = useSound(messageSfx, { volume: 0.5 });
 
   // ╔══════════════════════════════════════════════════════════╗
   // ║                       Peer Module                        ║                            
@@ -37,6 +44,8 @@ const AppContextProvider = ({ children }) => {
 
     peer.current.on('connect', () => {
       setPeerConnection(true);
+
+      playJoinSfx();
 
       stopListenAnswer();
       deleteSignal(getRoomId());
@@ -94,6 +103,7 @@ const AppContextProvider = ({ children }) => {
       switch (type) {
         case 'm': // Message
           addMessage('guest', corpus);
+          playMessageSfx();
           break;
           
         case 's': // Status
@@ -307,6 +317,8 @@ const AppContextProvider = ({ children }) => {
     callType.current = type;
 
     setRoomId(id);
+
+    playJoinSfx();
 
     getLocalStream(setPeer, true);
   };

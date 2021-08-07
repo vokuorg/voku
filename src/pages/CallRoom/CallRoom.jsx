@@ -7,18 +7,34 @@ import { AppContext } from '../../contexts/AppContext/AppContext';
 
 import Logo from '../../components/logo/Logo';
 import Chat from '../../components/chat/Chat';
+import UserInfoModal from '../../components/modals/UserInfoModal';
 import UserVideoBox from '../../components/user-video-box/UserVideoBox';
 import CallControls from '../../components/call-controls/CallControls';
 
 function CallRoom() {
-  const { callType, joinRoom, peerConnection } = useContext(AppContext);
+  const { 
+    myName,
+    guestName,
+    callType,
+    joinRoom,
+    peerConnection
+  } = useContext(AppContext);
 
-  if (!callType.current) {
-    joinRoom(getRoomId());
-  }
+  const joinByLink = () => {
+    if (!callType.current) {
+      joinRoom(getRoomId());
+    }
+  };
   
   return (
     <div className="grid w-full h-screen grid-cols-8 overflow-hidden bg-dark">
+      <UserInfoModal
+        id={ 'userInfoModal' }
+        title={ 'User Name' }
+        initialVisibility={ true }
+        onSubmit={ joinByLink }
+      />
+
       <div className="flex flex-col h-full col-span-6 main-panel">
         <div className="py-3">
           <Link to="/">
@@ -29,15 +45,15 @@ function CallRoom() {
         <div className="flex flex-wrap content-center justify-center w-full h-full space-x-8 video-area">
           <UserVideoBox
             user="local"
-            name="Me"
-            color="bg-indigo-800"
+            name={ myName }
+            color="bg-primary"
           />
 
           { peerConnection &&
             <UserVideoBox
               user="remote"
-              name="Guest"
-              color="bg-blue-800"
+              name={ guestName }
+              color="bg-primary"
             />
           }
         </div>

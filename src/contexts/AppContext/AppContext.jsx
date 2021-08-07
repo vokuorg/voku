@@ -21,6 +21,31 @@ const AppContextProvider = ({ children }) => {
   const [playMessageSfx] = useSound(messageSfx, { volume: 0.5 });
 
   // ╔══════════════════════════════════════════════════════════╗
+  // ║                    User Info Module                      ║                            
+  // ╚══════════════════════════════════════════════════════════╝
+
+  let [myName, _setMyName] = useState('Esperantisto');
+  let myNameRef = useRef('Esperantisto');
+
+  let [guestName, setGuestName] = useState('Esperantisto');
+
+  const setMyName = (name) => {
+    _setMyName(name);
+    myNameRef.current = name;
+
+    sendMyUserInfo({ name: name }); 
+  };
+
+  const resetGuestName = () => setGuestName('Esperantisto'); 
+
+  const sendMyUserInfo = (info) => {
+    if (isPeerConnected()) {
+      let data = 'i=' + JSON.stringify(info);
+      sendToPeer(data);
+    }
+  };
+
+  // ╔══════════════════════════════════════════════════════════╗
   // ║                       Peer Module                        ║                            
   // ╚══════════════════════════════════════════════════════════╝
 
@@ -45,6 +70,8 @@ const AppContextProvider = ({ children }) => {
     peer.current.on('connect', () => {
       setPeerConnection(true);
 
+      sendMyUserInfo({ name: myNameRef.current });
+
       playJoinSfx();
 
       stopListenAnswer();
@@ -58,6 +85,7 @@ const AppContextProvider = ({ children }) => {
 
       setPeerConnection(false);
 
+      resetGuestName();
       cleanGuestMediaStream();
 
       if (callType.current === 'random') {
@@ -112,8 +140,10 @@ const AppContextProvider = ({ children }) => {
           break;
 
         case 'i': // Info
-          //setGuestInfo(JSON.parse(corpus));
-          //break;
+          let info = JSON.parse(corpus);
+          setGuestName(info.name);
+          break;
+          
         default:
           break;
       };
@@ -442,6 +472,10 @@ const AppContextProvider = ({ children }) => {
 
   return (
     <AppContext.Provider value={{
+      myName, // User Info Module's Start
+      setMyName,
+      guestName,
+      setGuestName, // User Info Module's End
       peerConnection, // Peer Module's Start
       isPeerSetted,
       isPeerConnected,

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import { getRoomId } from '../../utils/identify'
@@ -15,10 +15,19 @@ function CallRoom() {
   const { 
     myName,
     guestName,
+    isPeerConnected,
     callType,
     joinRoom,
     peerConnection
   } = useContext(AppContext);
+
+  useEffect(() => {
+    window.onbeforeunload = (e) => {
+      if (isPeerConnected()) {
+        return 'Are you sure you want to leave?';
+      }
+    };
+  });
 
   const joinByLink = () => {
     if (!callType.current) {

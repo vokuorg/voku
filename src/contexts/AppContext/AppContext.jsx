@@ -89,8 +89,7 @@ const AppContextProvider = ({ children }) => {
       cleanGuestMediaStream();
 
       if (callType.current === 'random') {
-        finishCall();
-        randomCall();
+        nextRandomCall();
       } else if (window.location.hash) {
         peer.current.destroy();
         waitSignalServerConnection(reconnectCall);
@@ -143,7 +142,7 @@ const AppContextProvider = ({ children }) => {
           let info = JSON.parse(corpus);
           setGuestName(info.name);
           break;
-          
+
         default:
           break;
       };
@@ -170,6 +169,7 @@ const AppContextProvider = ({ children }) => {
 
   const destroyPeer = () => {
     peer.current.destroy();
+    peer.current = null;
 
     stopListenAnswer();
   };
@@ -307,13 +307,22 @@ const AppContextProvider = ({ children }) => {
     }
   };
 
+  const nextRandomCall = () => {
+    if (isPeerSetted()) {
+      destroyPeer();
+      cleanMessages();
+
+      randomCall();
+    }
+  };
+
   const finishCall = () => {
+    callType.current = null;
+
     destroyPeer();
     cleanMessages();
 
-    if (callType.current !== 'random') {
-      history.replace('/');
-    }
+    history.replace('/');
   };
 
   const reconnectCall = async () => {
@@ -344,11 +353,13 @@ const AppContextProvider = ({ children }) => {
   };
 
   const startRoom = (type, id = generateId()) => {
+    if (!callType.current) {
+      playJoinSfx();
+    }
+
     callType.current = type;
 
     setRoomId(id);
-
-    playJoinSfx();
 
     getLocalStream(setPeer, true);
   };
@@ -482,6 +493,7 @@ const AppContextProvider = ({ children }) => {
       destroyPeer, // Peer Module's End
       callType, // Call Module's Start
       call,
+      nextRandomCall,
       finishCall,
       reconnectCall,
       randomCall,

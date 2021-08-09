@@ -5,10 +5,11 @@ import { AppContext } from '../../contexts/AppContext/AppContext';
 import Button from '../button/Button';
 
 import '../../index.css';
-import './CallControls.css';
 
 function CallControls() {
   const {
+    callType,
+    nextRandomCall,
     finishCall,
     localMediaStatus,
     enableLocalVideo,
@@ -28,6 +29,10 @@ function CallControls() {
     else enableLocalAudio();
   }
 
+  const handleNextCallButton = () => {
+    nextRandomCall();
+  }
+
   const handleFinishCallButton = () => {
     finishCall();
   }
@@ -36,7 +41,7 @@ function CallControls() {
   return (
     <div className="relative flex content-center justify-center space-x-3">
       { /* Volume Button */ }
-      <Button classNames="invisible h-9 my-auto bg-dark-tertiary hover:bg-gray text-white absolute left-3">
+      <Button classNames="invisible h-10 w-10 justify-center bg-dark-tertiary hover:bg-gray text-white absolute bottom-0 left-3">
         <svg className="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
           <path fillRule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z" clipRule="evenodd" />
         </svg>
@@ -49,35 +54,23 @@ function CallControls() {
       
       { /* Audio Button */ }
       <Button
-        onClick={handleAudioButton}
+        onClick={ handleAudioButton }
         classNames={
-          `${localMediaStatus.audio ? 'text-white' : 'text-gray-500'}
-          h-9 my-auto bg-dark-tertiary hover:bg-gray`
+          `${ localMediaStatus.audio ? 'text-white' : 'text-gray-500' }
+          h-10 w-10 justify-center bg-dark-tertiary hover:bg-gray`
         }
       >
         <svg className="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
           <path fillRule="evenodd" d="M7 4a3 3 0 016 0v4a3 3 0 11-6 0V4zm4 10.93A7.001 7.001 0 0017 8a1 1 0 10-2 0A5 5 0 015 8a1 1 0 00-2 0 7.001 7.001 0 006 6.93V17H6a1 1 0 100 2h8a1 1 0 100-2h-3v-2.07z" clipRule="evenodd" />
         </svg>
       </Button>
-      
-      { /* Finish Call Button */ }
-      <Button
-        onClick={handleFinishCallButton}
-        classNames="h-10 bg-danger hover:bg-danger-dark text-white"
-      >
-        <svg className="w-6 h-6 rotate-135" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-          <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-        </svg>
-
-        <span className="hidden ml-2 text-lg">Sekva alvoko</span>
-      </Button>
 
       { /* Video Button */ }
       <Button
-        onClick={handleVideoButton}
+        onClick={ handleVideoButton }
         classNames={
-          `${localMediaStatus.video ? 'text-white' : 'text-gray-500'}
-          h-9 my-auto bg-dark-tertiary hover:bg-gray`
+          `${ localMediaStatus.video ? 'text-white' : 'text-gray-500' }
+          h-10 w-10 justify-center bg-dark-tertiary hover:bg-gray`
         }
       >
         <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -85,9 +78,37 @@ function CallControls() {
         </svg>
       </Button>
 
+      { /* Finish Call Button */ }
+      <Button
+        onClick={ handleFinishCallButton }
+        classNames="h-10 px-4 bg-danger hover:bg-danger-dark text-white"
+      >
+        <svg className="w-6 h-6 rotate-135" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+        </svg>
+
+        <span className="ml-2 text-lg">Finish Call</span>
+      </Button>
+
+      { /* Next Call Button */ }
+      { callType.current === 'random' &&
+        <Button
+          onClick={ handleNextCallButton }
+          classNames="h-10 px-4 bg-primary hover:bg-primary-dark text-white"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M17.924 2.617a.997.997 0 00-.215-.322l-.004-.004A.997.997 0 0017 2h-4a1 1 0 100 2h1.586l-3.293 3.293a1 1 0 001.414 1.414L16 5.414V7a1 1 0 102 0V3a.997.997 0 00-.076-.383z" />
+            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+          </svg>
+
+          
+            <span className="ml-2 text-lg">Next Call</span>
+        </Button>
+      }
+
 
       { /* Expand Button */ }
-      <Button classNames="invisible h-9 my-auto bg-dark-tertiary hover:bg-gray text-white absolute right-3">
+      <Button classNames="invisible h-10 w-10 justify-center bg-dark-tertiary hover:bg-gray text-white absolute right-3">
         <svg className="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
         </svg>

@@ -10,14 +10,22 @@ const RoomModal = ({ id, title }) => {
   const [roomId, setRoomId] = useState();
   const isValidId = !/^[a-z]{4}-[a-z]{4}$/.test(roomId);
 
-  const { startRoom, joinRoom } = useContext(AppContext);
+  const {
+    setCallLinkModalVisibility,
+    startRoom,
+    joinRoom
+  } = useContext(AppContext);
 
 
   const _startRoom = () => {
+    setCallLinkModalVisibility(true);
+    
     startRoom('direct');
   };
 
   const _joinRoom = () => {
+    setCallLinkModalVisibility(false);
+    
     joinRoom(roomId);
   };
 

@@ -20,6 +20,9 @@ const AppContextProvider = ({ children }) => {
   const [playJoinSfx] = useSound(joinSfx, { volume: 0.5 });
   const [playMessageSfx] = useSound(messageSfx, { volume: 0.5 });
 
+  const [callLinkModalVisibility, setCallLinkModalVisibility] = useState(false);
+
+
   // ╔══════════════════════════════════════════════════════════╗
   // ║                    User Info Module                      ║                            
   // ╚══════════════════════════════════════════════════════════╝
@@ -483,6 +486,8 @@ const AppContextProvider = ({ children }) => {
 
   return (
     <AppContext.Provider value={{
+      callLinkModalVisibility,
+      setCallLinkModalVisibility,
       myName, // User Info Module's Start
       setMyName,
       guestName,

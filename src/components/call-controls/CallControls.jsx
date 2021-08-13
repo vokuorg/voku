@@ -8,6 +8,7 @@ import '../../index.css';
 
 function CallControls() {
   const {
+    setCallLinkModalVisibility,
     callType,
     nextRandomCall,
     finishCall,
@@ -34,6 +35,8 @@ function CallControls() {
   }
 
   const handleFinishCallButton = () => {
+    setCallLinkModalVisibility(false);
+    
     finishCall();
   }
   

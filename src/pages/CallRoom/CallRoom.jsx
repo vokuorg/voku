@@ -7,12 +7,15 @@ import { AppContext } from '../../contexts/AppContext/AppContext';
 
 import Logo from '../../components/logo/Logo';
 import Chat from '../../components/chat/Chat';
+import CopyableBadge from '../../components/copyable-badge/CopyableBadge';
 import UserInfoModal from '../../components/modals/UserInfoModal';
+import CallLinkModal from '../../components/modals/CallLinkModal';
 import UserVideoBox from '../../components/user-video-box/UserVideoBox';
 import CallControls from '../../components/call-controls/CallControls';
 
 function CallRoom() {
   const { 
+    callLinkModalVisibility,
     myName,
     guestName,
     isPeerConnected,
@@ -44,6 +47,10 @@ function CallRoom() {
         onSubmit={ joinByLink }
       />
 
+      { callLinkModalVisibility &&
+        <CallLinkModal />
+      }
+
       <div className="flex flex-col h-full col-span-6 main-panel">
         <div className="py-3">
           <Link to="/">
@@ -73,10 +80,9 @@ function CallRoom() {
       </div>
 
       <div className="flex flex-col h-full col-span-2 overflow-hidden text-white rounded-l-lg bg-dark-tertiary side-panel">
-        <div className="py-3 text-xl border-b-2 border-solid border-gray">
-          Room ID:
-          <span className="ml-3 font-extrabold text-secondary">
-           { getRoomId() }
+        <div className="py-3 border-b-2 border-solid border-gray">
+          <span className="text-xl font-bold text-secondary">
+            { getRoomId() }
           </span>
         </div>
         <Chat />

@@ -10,6 +10,7 @@ import RoomModal from '../../components/modals/RoomModal';
 
 function Home() {
   const {
+    setCallLinkModalVisibility,
     isPeerSetted,
     destroyPeer,
     randomCall,
@@ -21,6 +22,8 @@ function Home() {
   };
 
   const _randomCall = () => {
+    setCallLinkModalVisibility(false);
+
     randomCall();
   }
 

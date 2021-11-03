@@ -53,9 +53,7 @@ function CallRoom() {
 
       <div className="flex flex-col h-full col-span-6 main-panel">
         <div className="py-3">
-          <Link to="/">
-            <Logo textColor="white" />
-          </Link>
+          <Logo textColor="white" linkTo="/" />
         </div>
 
         <div className="flex flex-wrap content-center justify-center w-full h-full space-x-8 video-area">

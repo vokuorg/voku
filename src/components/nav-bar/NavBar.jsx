@@ -10,9 +10,7 @@ function NavBar({ classNames }) {
   return (
     <div className={`flex justify-between py-3 ${classNames || ''}`}>
       <div className="flex space-x-10">
-        <Link to="/">
-          <Logo textColor="white" />
-        </Link>
+        <Logo textColor="white" linkTo="/" />
 
         <Link to="/call" 
           className="hidden mt-auto text-2xl align-bottom text-gray-light hover:text-secondary" href="#">

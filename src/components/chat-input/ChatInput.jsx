@@ -8,7 +8,62 @@ function ChatInput({ placeholder, onSend }) {
   const [message, setMessage] = useState();
 
   const handleChange = (e) => {
-    setMessage(e.target.value);
+    let value = e.target.value;
+    
+    let lastChar = value[value.length - 1];
+
+    if (value && lastChar.toLowerCase() === 'x') {
+      let specialLetter = value[value.length - 2];
+      let beforeSpecialLetter = value.slice(0, value.length - 2);
+
+      switch (specialLetter) {
+        case 'C':
+          value = beforeSpecialLetter + 'Ĉ';
+          break;
+        case 'c':
+          value = beforeSpecialLetter + 'ĉ';
+          break;
+
+        case 'G':
+          value = beforeSpecialLetter + 'Ĝ';
+          break;
+        case 'g':
+          value = beforeSpecialLetter + 'ĝ';
+
+        case 'H':
+          value = beforeSpecialLetter + 'Ĥ';
+          break;
+        case 'h':
+          value = beforeSpecialLetter + 'ĥ';
+          break;
+
+        case 'J':
+          value = beforeSpecialLetter + 'Ĵ';
+          break;
+        case 'j':
+          value = beforeSpecialLetter + 'ĵ';
+          break;
+
+        case 'S':
+          value = beforeSpecialLetter + 'Ŝ';
+          break;
+        case 's':
+          value = beforeSpecialLetter + 'ŝ';
+          break;
+
+        case 'U':
+          value = beforeSpecialLetter + 'Ŭ';
+          break;
+        case 'u':
+          value = beforeSpecialLetter + 'ŭ';
+          break;
+
+        default:
+          break;
+      }
+    }
+
+    setMessage(value);
   };
 
   const handleKeyDown = (e) => {

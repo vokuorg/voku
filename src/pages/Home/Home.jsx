@@ -53,10 +53,10 @@ function Home() {
             </p>
 
             <div className="flex justify-start space-x-5">
-              <BalloonButton onClick={ _randomCall } classNames="text-3xl text-white roboto-font font-medium bg-esperanto hover:bg-esperanto-dark border-esperanto"
+              <BalloonButton onClick={ _randomCall } classNames="text-3xl text-white roboto-font font-medium bg-esperanto hover:bg-esperanto-dark border-esperanto hover:border-esperanto-dark"
                 side="left" text="Random Call" />
                 
-              <BalloonButton onClick={ openRoomModal } classNames="text-3xl text-white roboto-font font-medium bg-dark-tertiary hover:bg-gray border-dark-tertiary"
+              <BalloonButton onClick={ openRoomModal } classNames="text-3xl text-white roboto-font font-medium bg-dark-tertiary hover:bg-gray border-dark-tertiary hover:border-gray"
                 side="right" text="Call Friend" />
             </div>
           </div>

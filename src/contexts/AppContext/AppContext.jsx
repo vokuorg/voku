@@ -420,7 +420,12 @@ const AppContextProvider = ({ children }) => {
       setLocalMediaStatus({ video: true, audio: true });
 
       callback(callbackParam);
-    }).catch(err => console.log(err));
+    }).catch(err => {
+      alert('Cannot access user media');
+      console.log(err);
+      
+      history.replace('/');
+    });
   };
 
   const stopLocalStream = () => {

@@ -3,7 +3,6 @@ import Logo from '../logo/Logo';
 import { Link } from "react-router-dom";
 import BalloonButton from '../balloon-button/BalloonButton';
 
-import './NavBar.css';
 import '../../index.css';
 
 function NavBar({ classNames }) {

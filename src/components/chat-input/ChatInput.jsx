@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Button from '../button/Button';
 
 import '../../index.css';
-import './ChatInput.css';
 
 function ChatInput({ placeholder, onSend }) {
   const [message, setMessage] = useState();

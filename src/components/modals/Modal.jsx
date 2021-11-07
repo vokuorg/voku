@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
 import '../../index.css';
-import './Modal.css';
 
 function Modal({ id, title, ref, children, initialVisibility = false }) {
   const [visibility, setVisibility] = useState(initialVisibility);

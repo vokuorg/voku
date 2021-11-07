@@ -35,40 +35,55 @@ function Home() {
 
   
   return (
-    <div className="flex flex-col w-full h-screen px-20 bg-dark">
+    <div className="flex flex-col w-full h-full px-3 md:h-screen md:px-24 bg-dark">
       <NavBar classNames="" />
 
-      <div className="grid justify-center h-full grid-cols-2">
+      <div className="grid content-center justify-center h-full grid-cols-2 pt-3 md:pt-0">
+
+        {/* Illustration */}
+        <div className="flex justify-center order-1 w-full h-full col-span-2 mb-8 md:col-span-1 md:order-2 md:mb-0">
+          <HomeIllustration className="object-none object-center w-3/5 h-full md:w-10/12" />
+        </div>
 
         {/* Text and call to action*/}
-        <div className="flex flex-col content-center w-full h-auto col-span-1">
+        <div className="flex flex-col order-2 w-full h-auto col-span-2 md:col-span-1 md:order-1">
           
-          <div className="flex flex-col justify-center w-full h-full">
-            <h1 className="mb-3 text-5xl font-bold leading-snug text-left text-white roboto-font">Speak Esperanto With
-              Someone Around The World<font className="text-primary">.</font>
+          <div className="flex flex-col w-full h-full md:justify-center">
+            <h1 className="mb-3 text-2xl font-bold leading-snug text-center text-white md:text-left md:leading-snug md:text-5xl roboto-font">
+              Speak Esperanto With Someone Around The World
+              <font className="text-primary">.</font>
             </h1>
             
-            <p className="w-9/12 text-2xl leading-normal text-left mb-7 text-gray-light roboto-font">Be part of the hub of
-              Esperanto speakers and promote this beautiful language.
+            <p className="text-lg leading-normal text-center md:text-left md:leading-normal md:w-9/12 md:text-2xl mb-7 text-gray-light roboto-font">
+              <span className="hidden md:block">
+                Be part of the hub of esperanto speakers and promote this beautiful language.
+              </span>
+
+              <span className="md:hidden">
+              Be part of the hub of esperanto speakers.
+              </span>
             </p>
 
-            <div className="flex justify-start space-x-5">
-              <BalloonButton onClick={ _randomCall } classNames="text-3xl text-white roboto-font font-medium bg-esperanto hover:bg-esperanto-dark border-esperanto hover:border-esperanto-dark"
-                side="left" text="Random Call" />
-                
-              <BalloonButton onClick={ openRoomModal } classNames="text-3xl text-white roboto-font font-medium bg-dark-tertiary hover:bg-gray border-dark-tertiary hover:border-gray"
-                side="right" text="Call Friend" />
+            <div className="grid grid-cols-1 mt-3 md:mt-0 md:w-max md:grid-cols-2 md:space-x-5 md:justify-start">          
+              <BalloonButton
+                onClick={ openRoomModal }
+                classNames="md:w-auto w-full text-2xl md:text-3xl text-white roboto-font font-medium bg-dark-tertiary hover:bg-gray border-dark-tertiary hover:border-gray"
+                side="left"
+                text="Call Friend"
+              />
+
+              <BalloonButton
+                onClick={ _randomCall }
+                classNames="md:w-auto my-3 md:my-0 w-full text-2xl md:text-3xl text-white roboto-font font-medium bg-esperanto hover:bg-esperanto-dark border-esperanto hover:border-esperanto-dark"
+                side="right"
+                text="Random Call"
+              />
             </div>
           </div>
         </div>
-
-        {/* Illustration */}
-        <div className="flex justify-center w-full h-full col-span-1">
-          <HomeIllustration className="h-full" />
-        </div>
       </div>
 
-      <div className="py-1">
+      <div className="hidden py-1 md:block">
         <p className="text-lg text-left text-gray-400 roboto-font">
           © 2021 videovoko
         </p>

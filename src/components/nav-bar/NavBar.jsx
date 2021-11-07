@@ -7,30 +7,32 @@ import '../../index.css';
 
 function NavBar({ classNames }) {
   return (
-    <div className={`flex justify-between py-3 ${classNames || ''}`}>
-      <div className="flex space-x-10">
+    <div className={ `flex justify-between py-3 ${classNames || ''}` }>
+      <div className="flex items-end">
         <Logo textColor="white" linkTo="/" />
 
-        <Link to="/call" 
-          className="hidden mt-auto text-2xl align-bottom text-gray-light hover:text-secondary" href="#">
-          About
-        </Link>
+        <div className="hidden space-x-10 md:block">
+          <Link to="/call" 
+            className="hidden mt-auto text-2xl text-gray-light hover:text-secondary" href="#">
+            About
+          </Link>
 
-        <a
-          href="https://github.com/videovoko/videovoko-org/"
-          className="mt-auto text-2xl text-gray-light hover:text-secondary"
-          target="_blank" rel="noopener noreferrer"
-        >
-          Donate
-        </a>
-        
-        <a
-          href="https://github.com/videovoko/videovoko-org/"
-          className="mt-auto text-2xl text-gray-light hover:text-secondary" href="https://github.com/videovoko/videovoko-org"
-          target="_blank" rel="noopener noreferrer"
-        >
-          GitHub
-        </a>
+          <a
+            href="https://github.com/videovoko/videovoko-org/"
+            className="mt-auto text-2xl text-gray-light hover:text-secondary"
+            target="_blank" rel="noopener noreferrer"
+          >
+            Donate
+          </a>
+          
+          <a
+            href="https://github.com/videovoko/videovoko-org/"
+            className="mt-auto text-2xl text-gray-light hover:text-secondary" href="https://github.com/videovoko/videovoko-org"
+            target="_blank" rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
+        </div>
       </div>
 
       <div className="hidden space-x-5">

@@ -9,8 +9,8 @@ function Logo({ textColor, linkTo = '#' }) {
   return (
     <div className={ textColor === 'black' ? 'text-black' : 'text-white' }>
       <Link to={ linkTo }>
-        <Isotype className="inline-block w-10 h-10 mr-3" />
-        <span className="inline-block text-4xl tracking-wide align-middle alata-font">videovoko</span>
+        <Isotype className="inline-block w-8 h-8 mr-3 md:w-10 md:h-10" />
+        <span className="inline-block text-3xl tracking-wide align-middle md:text-4xl alata-font">videovoko</span>
       </Link>
     </div>
   );

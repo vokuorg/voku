@@ -51,7 +51,7 @@ function Home() {
           <div className="flex flex-col w-full h-full md:justify-center">
             <h1 className="mb-3 text-2xl font-bold leading-snug text-center text-white md:text-left md:leading-snug md:text-5xl roboto-font">
               Speak Esperanto With Someone Around The World
-              <font className="text-primary">.</font>
+              <font className="text-esperanto">.</font>
             </h1>
             
             <p className="text-lg leading-normal text-center md:text-left md:leading-normal md:w-9/12 md:text-2xl mb-7 text-gray-light roboto-font">

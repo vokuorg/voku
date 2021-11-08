@@ -64,7 +64,7 @@ function NavBar({ classNames }) {
       { /* Mobile Menu */ }
       <div
         className={
-          "fixed top-0 flex flex-col justify-center left-0 z-10 w-screen h-screen pt-4 bg-dark-secondary" +
+          "fixed top-0 flex flex-col justify-center left-0 z-10 w-screen h-full pt-4 bg-dark-secondary" +
           (menuVisibility ? " block" : " hidden")
         }
       >
@@ -110,7 +110,7 @@ function NavBar({ classNames }) {
 
           </div>
 
-          <div className="flex items-end justify-center h-full">
+          <div className="flex items-end justify-center h-full pb-2">
             <p className="text-lg text-left text-gray-400 roboto-font">
               © 2021 videovoko
             </p>

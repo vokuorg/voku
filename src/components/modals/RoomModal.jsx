@@ -40,11 +40,11 @@ const RoomModal = ({ id, title }) => {
 
   return (
     <Modal id={ id } title={ title }>
-      <div className="flex flex-col px-5 pb-5">
+      <div className="flex flex-col w-auto px-5 pb-5">
         <div classNames="text-center">
           <Button
             onClick={ _startRoom }
-            classNames='h-10 px-20 text-xl bg-primary hover:bg-primary-dark'
+            classNames='h-10 w-full md:w-72 justify-center text-xl bg-primary hover:bg-primary-dark'
           >
             Start Room
           </Button>
@@ -52,19 +52,19 @@ const RoomModal = ({ id, title }) => {
 
         <span className="py-6">Or join with ID:</span>
 
-        <div className="space-x-1">
+        <div className="flex justify-center">
           <Input
-            classNames="w-36 pl-5 text-xl focus:border-primary"
+            classNames="w-full text-center md:w-36 md:mb-0 mb-2 mr-2 block text-xl focus:border-primary md:col-span-1 col-span-2"
             type="text"
             maxLength="9"
-            placeholder="aaaa-bbbb"
+            placeholder="abcd-wxyz"
             value={ roomId }
             onChange={ handleInputChange }
           />
 
           <Button
             onClick={ _joinRoom }
-            classNames='w-auto h-10 text-xl bg-secondary hover:bg-secondary-dark'
+            classNames='w-full justify-center md:w-36 h-10 block text-xl bg-secondary md:col-span-1 col-span-2 hover:bg-secondary-dark'
             disabled={ isValidId }
           >
             Join Room

@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/videovoko-org/static/css/main.46f9fcd2.chunk.css",
-    "main.js": "/videovoko-org/static/js/main.06af6398.chunk.js",
-    "main.js.map": "/videovoko-org/static/js/main.06af6398.chunk.js.map",
+    "main.js": "/videovoko-org/static/js/main.f073e68d.chunk.js",
+    "main.js.map": "/videovoko-org/static/js/main.f073e68d.chunk.js.map",
     "runtime-main.js": "/videovoko-org/static/js/runtime-main.61a9bb25.js",
     "runtime-main.js.map": "/videovoko-org/static/js/runtime-main.61a9bb25.js.map",
     "static/js/2.2a9fc15e.chunk.js": "/videovoko-org/static/js/2.2a9fc15e.chunk.js",
@@ -25,6 +25,6 @@
     "static/js/runtime-main.61a9bb25.js",
     "static/js/2.2a9fc15e.chunk.js",
     "static/css/main.46f9fcd2.chunk.css",
-    "static/js/main.06af6398.chunk.js"
+    "static/js/main.f073e68d.chunk.js"
   ]
 }

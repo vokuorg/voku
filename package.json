@@ -1,8 +1,8 @@
 {
-  "name": "videovoko",
+  "name": "voku",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://videovoko.github.io/videovoko-org",
+  "homepage": "http://voku-org.github.io/voku-site",
   "dependencies": {
     "@craco/craco": "^6.1.2",
     "@testing-library/jest-dom": "^5.11.4",

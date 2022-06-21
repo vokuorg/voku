@@ -2,7 +2,7 @@
   "name": "voku",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://voku-org.github.io/voku-site",
+  "homepage": ".",
   "dependencies": {
     "@craco/craco": "^6.1.2",
     "@testing-library/jest-dom": "^5.11.4",
@@ -24,11 +24,11 @@
   },
   "scripts": {
     "start": "SKIP_PREFLIGHT_CHECK=true craco start",
-    "build": "craco build",
+    "build": "SKIP_PREFLIGHT_CHECK=true craco build",
     "test": "craco test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "SKIP_PREFLIGHT_CHECK=true gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [

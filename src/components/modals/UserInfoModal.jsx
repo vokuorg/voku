@@ -45,13 +45,13 @@ const UserInfoModal = ({ id, title, onSubmit, initialVisibility }) => {
     >
       <div className="flex flex-col px-5 pb-5">
 
-        <p className="pb-6 text-xl">
+        <p className="pb-5 text-xl">
           Set your name:
         </p>
 
-        <div>
+        <div className="space-x-2">
           <Input
-            classNames="w-2/4 text-xl focus:border-primary mb-3 text-center"
+            classNames="w-2/4 text-xl focus:border-primary text-center"
             type="text"
             maxLength="20"
             placeholder={ myName }

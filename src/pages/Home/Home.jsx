@@ -51,7 +51,7 @@ function Home() {
           <div className="flex flex-col w-full h-full md:justify-center">
             <h1 className="mb-3 text-2xl font-bold leading-snug text-center text-white md:text-left md:leading-snug md:text-5xl roboto-font">
               Speak Esperanto With Someone Around The World
-              <font className="text-esperanto">.</font>
+              <font className="text-primary">.</font>
             </h1>
             
             <p className="text-lg leading-normal text-center md:text-left md:leading-normal md:w-9/12 md:text-2xl mb-7 text-gray-light roboto-font">
@@ -74,7 +74,7 @@ function Home() {
 
               <BalloonButton
                 onClick={ _randomCall }
-                classNames="md:w-auto my-3 md:my-0 w-full text-2xl md:text-3xl text-white roboto-font font-medium bg-esperanto hover:bg-esperanto-dark border-esperanto hover:border-esperanto-dark"
+                classNames="md:w-auto my-3 md:my-0 w-full text-2xl md:text-3xl text-white roboto-font font-medium bg-primary hover:bg-primary-dark border-primary hover:border-primary-dark"
                 side="right"
                 text="Random Call"
               />
@@ -85,7 +85,7 @@ function Home() {
 
       <div className="hidden py-1 md:block">
         <p className="text-lg text-left text-gray-400 roboto-font">
-          © 2021 videovoko
+          © 2022 voku.org
         </p>
       </div>
 

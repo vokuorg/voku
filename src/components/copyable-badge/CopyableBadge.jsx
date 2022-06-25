@@ -2,7 +2,7 @@ import React from 'react';
 
 import '../../index.css';
 
-function CopyableBadge({ text, buttonColor, classNames }) {
+function CopyableBadge({ text = value, value = text, buttonColor, classNames }) {
   return (
     <div
       className={`
@@ -16,7 +16,7 @@ function CopyableBadge({ text, buttonColor, classNames }) {
       </span>
 
       <button
-        onClick={ () => navigator.clipboard.writeText(text) }
+        onClick={ () => navigator.clipboard.writeText(value) }
         className="ml-3 focus:outline-none"
       >
         <svg

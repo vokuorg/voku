@@ -17,14 +17,15 @@ function NavBar({ classNames }) {
       <div className="flex items-end">
         <Logo textColor="white" linkTo="/" />
 
-        <div className="hidden space-x-10 md:block">
-          <Link to="/call" 
-            className="hidden mt-auto text-2xl text-gray-light hover:text-secondary" href="#">
+        <div className="hidden space-x-10 md:block roboto-font">
+          <Link
+            to="/call" 
+            className="hidden mt-auto text-2xl text-gray-light hover:text-secondary">
             About
           </Link>
 
           <a
-            href="https://github.com/videovoko/videovoko-org/"
+            href="https://github.com/voku-org/voku-site"
             className="mt-auto text-2xl text-gray-light hover:text-secondary"
             target="_blank" rel="noopener noreferrer"
           >
@@ -32,8 +33,8 @@ function NavBar({ classNames }) {
           </a>
           
           <a
-            href="https://github.com/videovoko/videovoko-org/"
-            className="mt-auto text-2xl text-gray-light hover:text-secondary" href="https://github.com/videovoko/videovoko-org"
+            href="https://github.com/voku-org/voku-site"
+            className="mt-auto text-2xl text-gray-light hover:text-secondary"
             target="_blank" rel="noopener noreferrer"
           >
             GitHub
@@ -42,10 +43,17 @@ function NavBar({ classNames }) {
       </div>
 
       <div className="hidden space-x-5">
-        <BalloonButton classNames="bg-trasparent text-white font-semibold roboto-font text-sm border-4 border-gray h-10 py-1"
-          side="left" text="Sign In" />
-        <BalloonButton classNames="bg-secondary text-white font-semibold roboto-font text-sm border-secondary h-10 py-1"
-          side="right" text="Sign Up" />
+        <BalloonButton
+          side="left"
+          text="Sign In"
+          classNames="bg-trasparent text-white font-semibold roboto-font text-sm border-4 border-gray h-10 py-1"
+        />
+
+        <BalloonButton
+          side="right"
+          text="Sign Up"
+          classNames="bg-secondary text-white font-semibold roboto-font text-sm border-secondary h-10 py-1"
+        />
       </div>
 
       { /* Open mobile menu button */ }
@@ -70,7 +78,10 @@ function NavBar({ classNames }) {
       >
         { /* Header with close button */ }
         <div className="flex justify-end pr-3 mb-10">
-          <button onClick={ handleMenuVisibility } className="focus:outline-none">
+          <button
+            onClick={ handleMenuVisibility }
+            className="focus:outline-none"
+          >
             <svg
               className="text-white w-7 h-7" 
               xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
@@ -81,7 +92,7 @@ function NavBar({ classNames }) {
         </div>
 
         { /* Menu items */ }
-        <div className="flex flex-col h-full">
+        <div className="flex flex-col h-full roboto-font">
           <div className="flex flex-col">
 
             <Link to="/about" 
@@ -101,8 +112,8 @@ function NavBar({ classNames }) {
             
             <a
               onClick={ handleMenuVisibility }
-              href="https://github.com/videovoko/videovoko-org/"
-              className="text-3xl text-gray-light" href="https://github.com/videovoko/videovoko-org"
+              href="https://github.com/voku-org/voku-site"
+              className="text-3xl text-gray-light"
               target="_blank" rel="noopener noreferrer"
             >
               GitHub
@@ -111,8 +122,8 @@ function NavBar({ classNames }) {
           </div>
 
           <div className="flex items-end justify-center h-full pb-2">
-            <p className="text-lg text-left text-gray-400 roboto-font">
-              © 2021 videovoko
+            <p className="text-lg text-left text-gray-400">
+              © 2022 voku.org
             </p>
           </div>
         </div>

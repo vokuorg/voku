@@ -1,21 +1,11 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "voku",
+  "name": "Video calling for esperanto speakers",
   "icons": [
     {
       "src": "icon.svg",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/svg+xml"
-    },
-    {
-      "src": "icon.png",
-      "type": "image/svg+xml",
-      "sizes": "192x192"
-    },
-    {
-      "src": "icon.png",
-      "type": "image/svg+xml",
-      "sizes": "512x512"
     }
   ],
   "start_url": ".",

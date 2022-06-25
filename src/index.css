@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'Alata';
-  src: local('Alata'), url(./fonts/Alata/Alata-Regular.ttf) format('truetype');
+  font-family: 'Ubuntu';
+  src: local('Ubuntu'), url(./fonts/Ubuntu/Ubuntu-Regular.ttf) format('truetype');
 }
 
 @font-face {
@@ -27,8 +27,8 @@ code {
     monospace;
 }
 
-.alata-font {
-  font-family: 'Alata', sans-serif;
+.ubuntu-font {
+  font-family: 'Ubuntu', sans-serif;
 }
 
 .roboto-font {

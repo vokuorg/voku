@@ -5,7 +5,7 @@ import Peer from 'simple-peer';
 
 import { firestore } from '../../firebase';
 
-import { generateId, setRoomId, getRoomId } from '../../utils/identify';
+import { generateId, isValidId, getRoomId } from '../../utils/identify';
 
 import joinSfx from '../../sounds/join.mp3';
 import messageSfx from '../../sounds/message.mp3';
@@ -22,6 +22,20 @@ const AppContextProvider = ({ children }) => {
 
   const [callLinkModalVisibility, setCallLinkModalVisibility] = useState(false);
 
+
+  // ╔══════════════════════════════════════════════════════════╗
+  // ║                     Room ID Module                       ║                            
+  // ╚══════════════════════════════════════════════════════════╝
+
+  const setRoomId = (id) => {
+    let pathname = window.location.pathname.slice(1);
+  
+    if (isValidId(pathname)) {
+      history.replace(id);
+    } else {
+      history.push(id);
+    }
+  };
 
   // ╔══════════════════════════════════════════════════════════╗
   // ║                    User Info Module                      ║                            

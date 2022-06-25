@@ -17,7 +17,7 @@ function SecondaryModal({ id, title, classNames, ref, children, initialVisibilit
       className={`
         ${ classNames || '' }
         ${ !visibility ? 'hidden' : '' }
-        fixed z-40 w-max text-white rounded-lg top-20 left-6 md:w-max bg-dark-tertiary
+        fixed z-40 w-max text-white rounded-lg top-5 left-5 md:w-max bg-dark-tertiary
       `}
     >
       <div className="flex justify-between px-5 py-3 mb-5 text-4xl md:text-2xl">

@@ -10,16 +10,25 @@ const generateId = () => {
   return id;
 };
 
+const isValidId = (id) => {
+  return /^[a-z]{4}-[a-z]{4}$/.test(id);
+}
+
 const setRoomId = (id) => {
-  if (window.location.hash) {
-    window.history.replaceState(null, null, `#${id}`);
+  let pathname = window.location.pathname.slice(1);
+
+  if (isValidId(pathname)) {
+    window.history.replaceState(null, null, id);
   } else {
-    window.location.hash = id;
+    window.location.pathname = id;
   }
 };
 
 const getRoomId = () => {
-  return window.location.hash.substr(1);
+  let pathname = window.location.pathname.slice(1);
+
+  if (isValidId(pathname)) return pathname;
+  else return undefined;
 };
 
-export { generateId, setRoomId, getRoomId };
+export { generateId, isValidId, setRoomId, getRoomId };

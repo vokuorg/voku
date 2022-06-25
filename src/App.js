@@ -1,7 +1,7 @@
 import './App.css';
 
 import {
-  HashRouter,
+  BrowserRouter,
   Switch,
   Route
 } from "react-router-dom";
@@ -14,7 +14,7 @@ import CallRoom from './pages/CallRoom/CallRoom';
 function App() {
   return (
     <div className="App">
-      <HashRouter hashType={ 'noslash' }>
+      <BrowserRouter>
         <AppContextProvider>
           <Switch>
             <Route
@@ -34,7 +34,7 @@ function App() {
             </Route>
           </Switch>
         </AppContextProvider>
-      </HashRouter>
+      </BrowserRouter>
     </div>
   );
 }

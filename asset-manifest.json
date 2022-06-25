@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "./static/css/main.3275af4b.chunk.css",
-    "main.js": "./static/js/main.cd330a42.chunk.js",
-    "main.js.map": "./static/js/main.cd330a42.chunk.js.map",
+    "main.js": "./static/js/main.f0358026.chunk.js",
+    "main.js.map": "./static/js/main.f0358026.chunk.js.map",
     "runtime-main.js": "./static/js/runtime-main.646e3db9.js",
     "runtime-main.js.map": "./static/js/runtime-main.646e3db9.js.map",
     "static/js/2.ce1e25d0.chunk.js": "./static/js/2.ce1e25d0.chunk.js",
@@ -16,15 +16,15 @@
     "static/js/2.ce1e25d0.chunk.js.LICENSE.txt": "./static/js/2.ce1e25d0.chunk.js.LICENSE.txt",
     "static/js/3.035d19ee.chunk.js.LICENSE.txt": "./static/js/3.035d19ee.chunk.js.LICENSE.txt",
     "static/media/index.css": "./static/media/Roboto-Regular.a8d6ac03.ttf",
-    "static/media/home-illustration.da5a3adb.svg": "./static/media/home-illustration.da5a3adb.svg",
+    "static/media/home-illustration.4941e970.svg": "./static/media/home-illustration.4941e970.svg",
     "static/media/join.5e707cae.mp3": "./static/media/join.5e707cae.mp3",
-    "static/media/logo.23bd1ad2.svg": "./static/media/logo.23bd1ad2.svg",
+    "static/media/logo.d9b026c7.svg": "./static/media/logo.d9b026c7.svg",
     "static/media/message.f132cc09.mp3": "./static/media/message.f132cc09.mp3"
   },
   "entrypoints": [
     "static/js/runtime-main.646e3db9.js",
     "static/js/2.ce1e25d0.chunk.js",
     "static/css/main.3275af4b.chunk.css",
-    "static/js/main.cd330a42.chunk.js"
+    "static/js/main.f0358026.chunk.js"
   ]
 }

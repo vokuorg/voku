@@ -20,17 +20,21 @@ const CallLinkModal = ({ id, classNames }) => {
       initialVisibility={ true }
       onClose={ () => setCallLinkModalVisibility(false) }
     >
+
       <div className="flex flex-col px-5 pb-5">
 
         <p className="mb-3 text-xl">
-          Share this call link to your friend:
+          Share this link to your friend:
         </p>
         
         <CopyableBadge
           classNames="mx-auto"
-          text={ `${ window.location.origin }/#${ getRoomId() }` }
+          value={ `${ window.location.origin}/${ getRoomId() }` }
+          text={ `${ window.location.host }/${ getRoomId() }` }
         />
+
       </div>
+      
     </SecondaryModal>
   );
 };

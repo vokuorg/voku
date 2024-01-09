@@ -1,70 +1,45 @@
-# Getting Started with Create React App
+# voku
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div align="center">
+  
+![](./src/assets/banner.png)
+  
+![](https://img.shields.io/github/license/vokuorg/voku?color=blue) ![](https://img.shields.io/badge/PRs-welcome-orange)
+  
+**Video Calling Platform** for **Esperanto Speakers**
+  
+</div>
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 📌 Introduction
+Voku is the place where Esperanto speakers can meet and talk to each other. It's a video calling platform where you can create a room and invite your friends to join you. Or you can use our random call mode to meet new people and make new friends from all over the world.
 
-### `yarn start`
+**Start using Voku at: [voku.org](https://voku.org/)**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## ✨ Features
+Voku is completely focused on the Esperanto community and its needs. We are constantly working on adding new features to make it more useful and fun. Some of the features that are already available are:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Peer-to-Peer video calling
+- Random call mode
+- Esperanto language support
+- X-System automatic translation
 
-### `yarn test`
+## 💚 What is Esperanto?
+Esperanto is the world's most widely spoken constructed international auxiliary language. Its simple grammar and a vocabulary make it easy to learn. It was created in 1887 by L. L. Zamenhof, a Polish-Jewish ophthalmologist, to allow people to communicate with each other, without having to learn each other's language.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🤝 Contribute
+Voku is completely open source and free for life. We depend on the community to maintain this project and keep improving it. If you want to contribute to this project, you can do in the following ways:
 
-### `yarn build`
+- Report/fix bugs and errors
+- Suggest/add new features
+- Infrastructure support
+- Financial support
+- Spread the word
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Any kind of help is important and welcome. Send us an email at [voku.org@gmail.com](mailto:voku.org@gmail.com) mentioning how you want to contribute to this project. Or you can directly create a pull request with your changes.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+We are always open to collaborating with organizations and companies as well. If you want to become a sponsor or partner, please contact us.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 📜 License
+Distributed under the MIT License. See `LICENSE` for more information.

@@ -38,6 +38,28 @@ const AppContextProvider = ({ children }) => {
   };
 
   // ╔══════════════════════════════════════════════════════════╗
+  // ║                 Room Interface Module                    ║                            
+  // ╚══════════════════════════════════════════════════════════╝
+
+  // Possible values for focusedUserVideo:
+  // - 'local': Local user's video is displayed in full screen
+  // - 'guest': Guest user's video is displayed in full screen
+  // - 'none': Users videos are displayed in a split screen
+  const [focusedUserVideo, focusUserVideo] = useState('local');
+
+  const focusLocalUserVideo = () => {
+    focusUserVideo('local');
+  }
+
+  const focusGuestUserVideo = () => {
+    focusUserVideo('guest');
+  }
+
+  const splitUserVideos = () => {
+    focusUserVideo('none');
+  }
+
+  // ╔══════════════════════════════════════════════════════════╗
   // ║                    User Info Module                      ║                            
   // ╚══════════════════════════════════════════════════════════╝
 
@@ -91,6 +113,10 @@ const AppContextProvider = ({ children }) => {
 
       playJoinSfx();
 
+      if (focusedUserVideo === 'local') {
+        focusGuestUserVideo();
+      }
+
       stopListenAnswer();
       deleteSignal(getRoomId());
       
@@ -101,6 +127,10 @@ const AppContextProvider = ({ children }) => {
       console.warn('Connection closed');
 
       setPeerConnection(false);
+
+      if (focusedUserVideo === 'guest') {
+        focusLocalUserVideo();
+      }
 
       resetGuestName();
       cleanGuestMediaStream();
@@ -505,6 +535,10 @@ const AppContextProvider = ({ children }) => {
 
   return (
     <AppContext.Provider value={{
+      focusedUserVideo,
+      focusLocalUserVideo,
+      focusGuestUserVideo,
+      splitUserVideos,
       callLinkModalVisibility,
       setCallLinkModalVisibility,
       myName, // User Info Module's Start

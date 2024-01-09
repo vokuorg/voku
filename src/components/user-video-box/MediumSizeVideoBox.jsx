@@ -4,9 +4,9 @@ import { useContext } from 'react';
 import { AppContext } from '../../contexts/AppContext/AppContext';
 
 import '../../index.css';
-import './UserVideoBox.css';
+import './VideoBox.css';
 
-function UserVideoBox({ user, name, color, onClickVideo }) {
+function MediumSizeVideoBox({ user, name, color, onClickVideo, classNames }) {
   const videoRef = useRef();
 
   const {
@@ -21,7 +21,7 @@ function UserVideoBox({ user, name, color, onClickVideo }) {
 
   useEffect(() => {
     let video = videoRef.current;
-    
+
     if (video && !video.srcObject && stream) {
       video.srcObject = stream;
       video.play();
@@ -29,8 +29,13 @@ function UserVideoBox({ user, name, color, onClickVideo }) {
   });
 
   return (
-    <div className="relative flex flex-wrap content-center justify-center border-2 border-solid rounded-lg bg-dark-secondary border-gray medium-size">
-      { !mediaStatus.video &&
+    <div
+      className={
+        `${classNames || ''}
+         relative flex flex-wrap content-center justify-center border-2 border-solid rounded-lg bg-dark-secondary border-gray w-full h-2/5 md:w-2/5 md:h-fit`
+      }
+    >
+      {!mediaStatus.video &&
         <div
           className={
             `${color || ''}
@@ -40,7 +45,7 @@ function UserVideoBox({ user, name, color, onClickVideo }) {
           {name[0]}
         </div>
       }
-      
+
       <video
         id={`${user}-video`}
         ref={videoRef}
@@ -48,7 +53,7 @@ function UserVideoBox({ user, name, color, onClickVideo }) {
         className={
           `${user === 'local' ? 'mirrored' : ''}
           ${!mediaStatus.video ? 'hidden' : ''}
-          w-full h-full bg-black rounded-lg`
+          absolute w-full h-full bg-black rounded-lg`
         }
         muted={user === 'local'}
       ></video>
@@ -60,4 +65,4 @@ function UserVideoBox({ user, name, color, onClickVideo }) {
   );
 }
 
-export default UserVideoBox;
+export default MediumSizeVideoBox;

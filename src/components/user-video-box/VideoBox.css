@@ -19,11 +19,25 @@
   }
 
   .full-size {
-    height: 97%;
+    height: 95%;
   }
 
   .full-size:before {
     padding-left: 100%;
     content: "";
+  }
+
+  .big-size {
+    height: 83.333333%;
+  }
+
+  .big-size:before {
+    padding-left: 100%;
+    content: "";
+  }
+
+  .padding-squared-aspect-ratio {
+    padding-left: calc(50vh - 3.125rem);
+    padding-right: calc(50vh - 3.125rem);
   }
 }

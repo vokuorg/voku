@@ -12,6 +12,12 @@ import Home from './pages/Home/Home';
 import CallRoom from './pages/CallRoom/CallRoom';
 
 function App() {
+  window.addEventListener('resize', () => {
+    let vh = window.innerHeight * 0.01;
+    
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  });
+
   return (
     <div className="App">
       <BrowserRouter>
